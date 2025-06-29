@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fase: Oceano Pacífico - Aquapédia</title>
+    
+    <!-- Importando a fonte do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* * =================================
+         * ESTILOS GERAIS E VARIÁVEIS DE COR
+         * =================================
+        */
+        :root {
+            --background-sea: #3188D4;
+            --panel-blue: #0A6EBD;
+            --panel-reading-blue: #1A79C3;
+            --accent-yellow: #FFD700;
+            --blank-bg: #085C9D;
+            --correct-green: #28a745;
+            --incorrect-red: #dc3545;
+            --text-dark: #000000;
+            --text-light: #FFFFFF;
+            --font-title: 'Fredoka One', cursive;
+            --font-body: 'Roboto', sans-serif;
+        }
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: var(--font-body);
+            background-color: var(--background-sea);
+            color: var(--text-light);
+            overflow: hidden;
+        }
+
+        /* * =================================
+         * LAYOUT, CABEÇALHO E NAVEGAÇÃO
+         * =================================
+        */
+        .container {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            padding: 15px 30px;
+            flex-shrink: 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-btn {
+            background-color: var(--accent-yellow);
+            color: var(--text-dark);
+            text-decoration: none;
+            padding: 8px 25px;
+            border: 3px solid var(--text-dark);
+            border-radius: 20px;
+            font-weight: bold;
+            box-shadow: 0 4px 0 0 var(--text-dark);
+            transition: all 0.1s ease-in-out;
+            margin: 0 5px;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .user-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid var(--text-dark);
+            margin-right: 8px;
+            background-color: #ccc;
+        }
+
+        /* * =================================
+         * PAINEL DO JOGO E SEÇÕES
+         * =================================
+        */
+        main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            gap: 15px;
+        }
+        
+        .game-section {
+            display: none;
+            width: 100%;
+            max-width: 950px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .game-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Seção 1: Investigação */
+        .reading-panel {
+            background-color: var(--panel-reading-blue);
+            padding: 25px;
+            border: 4px solid var(--text-dark);
+            border-radius: 20px;
+        }
+
+        .reading-panel h3 {
+            font-family: var(--font-title);
+            font-size: 1.8em;
+            margin: 0 0 15px 0;
+            color: var(--accent-yellow);
+            text-align: center;
+        }
+        
+        .reading-panel p {
+            margin: 0;
+            font-size: 1.1em;
+            line-height: 1.8;
+            text-align: left;
+        }
+        
+        .collectible-item {
+            background-color: var(--accent-yellow);
+            color: var(--text-dark);
+            padding: 2px 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: bold;
+        }
+        
+        .collectible-item.collected {
+            background-color: #555;
+            color: #aaa;
+            text-decoration: line-through;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .inventory-area {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--blank-bg);
+            border-radius: 10px;
+        }
+        
+        #inventory-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            min-height: 30px;
+        }
+        
+        #inventory-list li {
+            background-color: var(--accent-yellow);
+            color: var(--text-dark);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        #proceed-btn {
+            width: 100%;
+            margin-top: 20px;
+            padding: 15px;
+            font-size: 1.2em;
+            border-radius: 10px;
+            border: 3px solid var(--text-dark);
+            color: var(--text-dark);
+            background-color: var(--accent-yellow);
+            box-shadow: 0 4px 0 0 var(--text-dark);
+        }
+        
+        #proceed-btn:disabled {
+            background-color: #888;
+            box-shadow: 0 4px 0 0 #444;
+            cursor: not-allowed;
+            color: #bbb;
+        }
+
+        /* Seção 2: Questionário */
+        .game-panel {
+            background-color: var(--panel-blue);
+            padding: 25px;
+            border: 4px solid var(--text-dark);
+            border-radius: 20px;
+        }
+        
+        .interactive-area {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .fill-in-blanks {
+            flex-grow: 1;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+        
+        .blank-space, .image-slot {
+            border: 2px dashed var(--text-light);
+            background-color: var(--blank-bg);
+            border-radius: 8px;
+            transition: all 0.2s;
+            text-align: center;
+            color: var(--text-light);
+        }
+        
+        .blank-space {
+            display: inline-block;
+            width: 110px;
+            height: 28px;
+            line-height: 28px;
+            font-weight: bold;
+            vertical-align: middle;
+        }
+
+        .image-slots {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .image-slot {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .blank-space.over, .image-slot.over {
+            background-color: #0d79d1;
+            border-style: solid;
+        }
+
+        .blank-space.correct, .image-slot.correct { border-color: var(--correct-green); border-style: solid; }
+        .blank-space.incorrect, .image-slot.incorrect { border-color: var(--incorrect-red); border-style: solid; }
+        
+        #word-bank-questionnaire {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            border-top: 3px solid var(--blank-bg);
+            padding-top: 20px;
+        }
+        
+        .word-token {
+            background-color: var(--accent-yellow);
+            color: var(--text-dark);
+            padding: 8px 15px;
+            border-radius: 10px;
+            border: 3px solid var(--text-dark);
+            font-weight: bold;
+            box-shadow: 0 4px 0 0 var(--text-dark);
+            cursor: grab;
+        }
+
+        #check-btn {
+             width: 100%;
+            margin-top: 20px;
+            padding: 15px;
+            font-size: 1.2em;
+        }
+        
+        #result-message {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            min-height: 25px;
+        }
+
+    </style>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+             <nav>
+                <div class="nav-left">
+                    <a href="#" class="nav-btn active">Fases</a>
+                    <a href="#" class="nav-btn">Sobre</a>
+                </div>
+                <div class="nav-right">
+                    <a href="#" class="nav-btn">
+                        <img src="https://mergulholivre.com.br/wp-content/uploads/2023/07/Tubarao-Mako-peixe-de-agua-salgada-foto-6.webp" alt="[Avatar do Usuário]" class="user-avatar">
+                        <span>Apelido</span>
+                    </a>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Seção 1: Investigação -->
+            <section id="reading-section" class="game-section active">
+                <div class="reading-panel">
+                    <h3>Fase 2: Oceano Pacífico</h3>
+                    <p>
+                        O <mark class="collectible-item" data-type="word">Oceano Pacífico</mark> é o maior oceano da Terra, situado entre a <mark class="collectible-item" data-type="word">América</mark>, a leste, a Ásia e a <mark class="collectible-item" data-type="word">Austrália</mark>, a oeste. Nele, habitam criaturas incríveis como a <mark class="collectible-item" data-type="animal">Baleia-Azul</mark>, o maior animal do planeta, e a predatória <mark class="collectible-item" data-type="animal">Orca</mark>. Com 180 milhões de km² de área superficial, o Pacífico cobre quase um terço da superfície do <mark class="collectible-item" data-type="word">planeta</mark>, e em suas águas frias nadam a <mark class="collectible-item" data-type="animal">Beluga</mark> e o gigante <mark class="collectible-item" data-type="animal">Cachalote</mark>.
+                    </p>
+                    <div class="inventory-area">
+                        <h4>Itens Coletados:</h4>
+                        <ul id="inventory-list"></ul>
+                    </div>
+                    <button id="proceed-btn" class="nav-btn" disabled>Coletar todos os itens para continuar</button>
+                </div>
+            </section>
+            
+            <!-- Seção 2: Questionário -->
+            <section id="questionnaire-section" class="game-section">
+                <div class="game-panel">
+                    <div class="interactive-area">
+                        <div class="fill-in-blanks">
+                            ...é o maior oceano da <span class="blank-space" data-slot="terra"></span>, situado entre a <span class="blank-space" data-slot="america"></span>, a leste, a Ásia e a <span class="blank-space" data-slot="australia"></span>, a oeste...
+                        </div>
+                        <div class="image-slots">
+                            <div class="image-slot" data-slot="baleia-azul"></div>
+                            <div class="image-slot" data-slot="orca"></div>
+                            <div class="image-slot" data-slot="beluga"></div>
+                            <div class="image-slot" data-slot="cachalote"></div>
+                        </div>
+                    </div>
+                    <div id="word-bank-questionnaire"></div>
+                    <button id="check-btn" class="nav-btn">Checar Tentativa</button>
+                    <div id="result-message"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const readingSection = document.getElementById('reading-section');
+            const collectibleItems = readingSection.querySelectorAll('.collectible-item');
+            const inventoryList = document.getElementById('inventory-list');
+            const proceedBtn = document.getElementById('proceed-btn');
+            const collectedItems = new Set();
+            const totalItemsToCollect = collectibleItems.length;
+
+            const correctAnswers = {
+                'terra': 'planeta', // Oculto no texto original, para forçar o raciocínio
+                'america': 'América',
+                'australia': 'Austrália',
+                'baleia-azul': 'Baleia-Azul',
+                'orca': 'Orca',
+                'beluga': 'Beluga',
+                'cachalote': 'Cachalote'
+            };
+
+            collectibleItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const word = item.textContent;
+                    if (!collectedItems.has(word)) {
+                        collectedItems.add(item.outerHTML); // Salva o HTML completo para recriar depois
+                        item.classList.add('collected');
+                        
+                        const inventoryItem = document.createElement('li');
+                        inventoryItem.textContent = word;
+                        inventoryList.appendChild(inventoryItem);
+                        
+                        if (collectedItems.size === totalItemsToCollect) {
+                            proceedBtn.disabled = false;
+                            proceedBtn.textContent = 'Tudo pronto! Iniciar Questionário';
+                        }
+                    }
+                });
+            });
+
+            proceedBtn.addEventListener('click', () => {
+                if (proceedBtn.disabled) return;
+                readingSection.classList.remove('active');
+                document.getElementById('questionnaire-section').classList.add('active');
+                populateWordBankAndInitDragDrop();
+            });
+
+            function populateWordBankAndInitDragDrop() {
+                const wordBank = document.getElementById('word-bank-questionnaire');
+                wordBank.innerHTML = '';
+
+                collectedItems.forEach(itemHTML => {
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = itemHTML;
+                    const itemNode = tempDiv.firstChild;
+
+                    const token = document.createElement('div');
+                    token.className = 'word-token';
+                    token.draggable = true;
+                    token.textContent = itemNode.textContent;
+                    token.dataset.word = itemNode.textContent;
+                    token.dataset.type = itemNode.dataset.type; // word ou animal
+                    wordBank.appendChild(token);
+                });
+                
+                initDragDrop();
+            }
+            
+            function initDragDrop() {
+                const tokens = document.querySelectorAll('#word-bank-questionnaire .word-token');
+                const slots = document.querySelectorAll('.blank-space, .image-slot');
+                let draggedToken = null;
+
+                tokens.forEach(token => {
+                    token.addEventListener('dragstart', e => {
+                        draggedToken = e.target;
+                        setTimeout(() => e.target.classList.add('hidden'), 0);
+                    });
+                    token.addEventListener('dragend', e => {
+                        if (!draggedToken) e.target.remove(); // Remove o token do banco se foi solto com sucesso
+                    });
+                });
+                
+                slots.forEach(slot => {
+                    slot.addEventListener('dragover', e => { e.preventDefault(); slot.classList.add('over'); });
+                    slot.addEventListener('dragleave', () => slot.classList.remove('over'));
+                    slot.addEventListener('drop', e => {
+                        e.preventDefault();
+                        slot.classList.remove('over');
+                        if (draggedToken) {
+                            const word = draggedToken.dataset.word;
+                            const type = draggedToken.dataset.type;
+
+                            if (slot.classList.contains('blank-space') && type === 'word') {
+                                slot.textContent = word;
+                                slot.dataset.value = word;
+                                draggedToken = null;
+                            } else if (slot.classList.contains('image-slot') && type === 'animal') {
+                                // Substitua por imagens reais. Usando pravatar como placeholder.
+                                slot.style.backgroundImage = `url(https://mergulholivre.com.br/wp-content/uploads/2023/07/Tubarao-Mako-peixe-de-agua-salgada-foto-6.webp)`;
+                                slot.dataset.value = word;
+                                draggedToken = null;
+                            }
+                        }
+                    });
+                });
+            }
+
+            document.getElementById('check-btn').addEventListener('click', () => {
+                let allCorrect = true;
+                const slots = document.querySelectorAll('.blank-space, .image-slot');
+                
+                slots.forEach(slot => {
+                    const slotId = slot.dataset.slot;
+                    const userValue = slot.dataset.value || '';
+                    
+                    if (correctAnswers[slotId] && userValue === correctAnswers[slotId]) {
+                        slot.classList.add('correct');
+                        slot.classList.remove('incorrect');
+                    } else {
+                        slot.classList.add('incorrect');
+                        slot.classList.remove('correct');
+                        allCorrect = false;
+                    }
+                });
+                
+                const resultMessage = document.getElementById('result-message');
+                if(allCorrect) {
+                    resultMessage.textContent = "Parabéns, todas as respostas estão corretas!";
+                    resultMessage.style.color = 'var(--correct-green)';
+                } else {
+                     resultMessage.textContent = "Ops, parece que algo não está certo. Tente novamente!";
+                     resultMessage.style.color = 'var(--incorrect-red)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
