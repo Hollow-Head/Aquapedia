@@ -1,0 +1,268 @@
+{
+  "fases": [
+    {
+      "id_fase": 1,
+      "texto_fase": "Bem-vindo à Aquapédia, explorador. Nossa primeira expedição nos leva ao Oceano Atlântico...",
+      "palavras_coletadas": [
+        "Atlântico",
+        "Américas",
+        "Europa",
+        "África",
+        "Corrente do Golfo",
+        "Clima",
+        "Triângulo das Bermudas",
+        "Peixe-boi-marinho",
+        "Tartaruga de Couro",
+        "Bacalhau-do-atlântico",
+        "Tubarão Mako"
+      ],
+      "nome_imagens_animais": [
+        "peixe-boi-marinho.png",
+        "bacalhau-do-atlantico.png",
+        "tubarao-mako.png",
+        "tartaruga-de-couro.png"
+      ],
+      "questionario": {
+        "texto_com_lacunas": [
+          { "tipo": "texto", "conteudo": "O Oceano " },
+          { "tipo": "lacuna", "id_slot": "atlantico" },
+          { "tipo": "texto", "conteudo": " é o segundo maior do mundo, servindo como ponte entre os continentes das " },
+          { "tipo": "lacuna", "id_slot": "americas" },
+          { "tipo": "texto", "conteudo": " a oeste, e " },
+          { "tipo": "lacuna", "id_slot": "europa" },
+          { "tipo": "texto", "conteudo": " e " },
+          { "tipo": "lacuna", "id_slot": "africa" },
+          { "tipo": "texto", "conteudo": " a leste. A " },
+          { "tipo": "lacuna", "id_slot": "corrente-do-golfo" },
+          { "tipo": "texto", "conteudo": " é um sistema vital que afeta o " },
+          { "tipo": "lacuna", "id_slot": "clima" },
+          { "tipo": "texto", "conteudo": " global. Uma área famosa por seus mistérios é o " },
+          { "tipo": "lacuna", "id_slot": "triangulo-das-bermudas" },
+          { "tipo": "texto", "conteudo": "." }
+        ],
+        "slots_imagem": [
+          "peixe-boi-marinho",
+          "bacalhau-do-atlantico",
+          "tubarao-mako",
+          "tartaruga-de-couro"
+        ],
+        "respostas_corretas": {
+          "atlantico": "Atlântico",
+          "americas": "Américas",
+          "europa": "Europa",
+          "africa": "África",
+          "corrente-do-golfo": "Corrente do Golfo",
+          "clima": "Clima",
+          "triangulo-das-bermudas": "Triângulo das Bermudas",
+          "peixe-boi-marinho": "Peixe-boi-marinho",
+          "bacalhau-do-atlantico": "Bacalhau-do-atlântico",
+          "tubarao-mako": "Tubarão Mako",
+          "tartaruga-de-couro": "Tartaruga de Couro"
+        }
+      }
+    },
+    {
+      "id_fase": 2,
+      "texto_fase": "Prenda a respiração, explorador. Estamos entrando no mestre de todos os oceanos: o Pacífico...",
+      "palavras_coletadas": [
+        "Pacífico",
+        "Fossa das Marianas",
+        "Círculo de Fogo",
+        "Vulcões",
+        "Terremotos",
+        "Orca",
+        "Morsa",
+        "Beluga",
+        "Peixe-palhaço"
+      ],
+      "nome_imagens_animais": [
+        "orca.png",
+        "morsa.png",
+        "beluga.png",
+        "peixe-palhaco.png"
+      ],
+      "questionario": {
+        "texto_com_lacunas": [
+          { "tipo": "texto", "conteudo": "O maior oceano do mundo é o " },
+          { "tipo": "lacuna", "id_slot": "pacifico" },
+          { "tipo": "texto", "conteudo": ". Sua geologia é marcada pelo " },
+          { "tipo": "lacuna", "id_slot": "circulo-de-fogo" },
+          { "tipo": "texto", "conteudo": ", uma zona com muitos " },
+          { "tipo": "lacuna", "id_slot": "vulcoes" },
+          { "tipo": "texto", "conteudo": " e " },
+          { "tipo": "lacuna", "id_slot": "terremotos" },
+          { "tipo": "texto", "conteudo": ". O ponto mais fundo do planeta é a " },
+          { "tipo": "lacuna", "id_slot": "fossa-das-marianas" },
+          { "tipo": "texto", "conteudo": "." }
+        ],
+        "slots_imagem": [
+          "orca",
+          "morsa",
+          "beluga",
+          "peixe-palhaco"
+        ],
+        "respostas_corretas": {
+          "pacifico": "Pacífico",
+          "circulo-de-fogo": "Círculo de Fogo",
+          "vulcoes": "Vulcões",
+          "terremotos": "Terremotos",
+          "fossa-das-marianas": "Fossa das Marianas",
+          "orca": "Orca",
+          "morsa": "Morsa",
+          "beluga": "Beluga",
+          "peixe-palhaco": "Peixe-palhaço"
+        }
+      }
+    },
+    {
+      "id_fase": 3,
+      "texto_fase": "Nossa próxima parada nos leva ao oceano mais quente do mundo: o Índico...",
+      "palavras_coletadas": [
+        "Índico",
+        "Tropical",
+        "Monções",
+        "Ventos",
+        "Recifes de coral",
+        "Dugongo",
+        "Tubarão-Baleia",
+        "Cirurgião-Patela",
+        "Cangulo-de-cauda-rosa"
+      ],
+      "nome_imagens_animais": [
+        "dugongo.png",
+        "tubarao-baleia.png",
+        "cirurgiao-patela.png",
+        "cangulo-de-cauda-rosa.png"
+      ],
+      "questionario": {
+        "texto_com_lacunas": [
+          { "tipo": "texto", "conteudo": "As águas quentes do Oceano " },
+          { "tipo": "lacuna", "id_slot": "indico" },
+          { "tipo": "texto", "conteudo": " o caracterizam como um oceano " },
+          { "tipo": "lacuna", "id_slot": "tropical" },
+          { "tipo": "texto", "conteudo": ". O clima da região é definido pelas " },
+          { "tipo": "lacuna", "id_slot": "moncoes" },
+          { "tipo": "texto", "conteudo": ", que são " },
+          { "tipo": "lacuna", "id_slot": "ventos" },
+          { "tipo": "texto", "conteudo": " sazonais. Este oceano abriga extensos " },
+          { "tipo": "lacuna", "id_slot": "recifes-de-coral" },
+          { "tipo": "texto", "conteudo": "." }
+        ],
+        "slots_imagem": [
+          "dugongo",
+          "tubarao-baleia",
+          "cirurgiao-patela",
+          "cangulo-de-cauda-rosa"
+        ],
+        "respostas_corretas": {
+          "indico": "Índico",
+          "tropical": "Tropical",
+          "moncoes": "Monções",
+          "ventos": "Ventos",
+          "recifes-de-coral": "Recifes de coral",
+          "dugongo": "Dugongo",
+          "tubarao-baleia": "Tubarão-Baleia",
+          "cirurgiao-patela": "Cirurgião-Patela",
+          "cangulo-de-cauda-rosa": "Cangulo-de-cauda-rosa"
+        }
+      }
+    },
+    {
+      "id_fase": 4,
+      "texto_fase": "Prepare seu traje térmico, pois chegamos ao topo do mundo. O Oceano Ártico...",
+      "palavras_coletadas": [
+        "Ártico",
+        "Polo Norte",
+        "Gelo marinho",
+        "Noite polar",
+        "Narval",
+        "Urso-Polar",
+        "Foca-da-Groenlândia",
+        "Baleia-da-Groenlândia"
+      ],
+      "nome_imagens_animais": [
+        "narval.png",
+        "urso-polar.png",
+        "foca-da-groenlandia.png",
+        "baleia-da-groenlandia.png"
+      ],
+      "questionario": {
+        "texto_com_lacunas": [
+          { "tipo": "texto", "conteudo": "O Oceano " },
+          { "tipo": "lacuna", "id_slot": "artico" },
+          { "tipo": "texto", "conteudo": " está localizado no extremo " },
+          { "tipo": "lacuna", "id_slot": "polo-norte" },
+          { "tipo": "texto", "conteudo": ". Sua principal característica é a cobertura de " },
+          { "tipo": "lacuna", "id_slot": "gelo-marinho" },
+          { "tipo": "texto", "conteudo": ". Os seres vivos daqui são adaptados à " },
+          { "tipo": "lacuna", "id_slot": "noite-polar" },
+          { "tipo": "texto", "conteudo": ", um longo período sem luz solar." }
+        ],
+        "slots_imagem": [
+          "narval",
+          "urso-polar",
+          "foca-da-groenlandia",
+          "baleia-da-groenlandia"
+        ],
+        "respostas_corretas": {
+          "artico": "Ártico",
+          "polo-norte": "Polo Norte",
+          "gelo-marinho": "Gelo marinho",
+          "noite-polar": "Noite polar",
+          "narval": "Narval",
+          "urso-polar": "Urso-Polar",
+          "foca-da-groenlandia": "Foca-da-Groenlândia",
+          "baleia-da-groenlandia": "Baleia-da-Groenlândia"
+        }
+      }
+    },
+    {
+      "id_fase": 5,
+      "texto_fase": "Nossa expedição termina no local mais frio, ventoso e selvagem do planeta. O Oceano Antártico...",
+      "palavras_coletadas": [
+        "Antártico",
+        "Antártida",
+        "Krill-Antártico",
+        "Cadeia alimentar",
+        "Estações científicas",
+        "Foca-de-Weddell",
+        "Pinguim-Imperador"
+      ],
+      "nome_imagens_animais": [
+        "foca-de-weddell.png",
+        "pinguim-imperador.png",
+        "krill-antartico.png"
+      ],
+      "questionario": {
+        "texto_com_lacunas": [
+          { "tipo": "texto", "conteudo": "O Oceano " },
+          { "tipo": "lacuna", "id_slot": "antartico" },
+          { "tipo": "texto", "conteudo": " é o que rodeia o continente da " },
+          { "tipo": "lacuna", "id_slot": "antartida" },
+          { "tipo": "texto", "conteudo": ". A base de toda a " },
+          { "tipo": "lacuna", "id_slot": "cadeia-alimentar" },
+          { "tipo": "texto", "conteudo": " deste oceano é o " },
+          { "tipo": "lacuna", "id_slot": "krill-antartico" },
+          { "tipo": "texto", "conteudo": ". Os humanos só habitam a região em " },
+          { "tipo": "lacuna", "id_slot": "estacoes-cientificas" },
+          { "tipo": "texto", "conteudo": "." }
+        ],
+        "slots_imagem": [
+          "foca-de-weddell",
+          "pinguim-imperador",
+          "krill-antartico"
+        ],
+        "respostas_corretas": {
+          "antartico": "Antártico",
+          "antartida": "Antártida",
+          "cadeia-alimentar": "Cadeia alimentar",
+          "krill-antartico": "Krill-Antártico",
+          "estacoes-cientificas": "Estações científicas",
+          "foca-de-weddell": "Foca-de-Weddell",
+          "pinguim-imperador": "Pinguim-Imperador",
+          "krill-antartico": "Krill-Antártico"
+        }
+      }
+    }
+  ]
+}
