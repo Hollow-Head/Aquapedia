@@ -4,246 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre - Aquapédia</title>
+    <link rel="stylesheet" href="css/style.css">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     
-    <style>
-        /* * =================================
-         * ESTILOS GERAIS E VARIÁVEIS DE COR
-         * =================================
-        */
-        :root {
-            --background-sea: #3188D4;
-            --accent-yellow: #FFD700;
-            --text-dark: #000000;
-            --text-light: #FFFFFF;
-            --panel-bg: #F0F8FF; /* AliceBlue, um branco levemente azulado */
-            --font-title: 'Fredoka One', cursive;
-            --font-body: 'Roboto', sans-serif;
-        }
-
-        body, html {
-            height: 100%;
-            margin: 0;
-            font-family: var(--font-body);
-            background-color: var(--background-sea);
-            color: var(--text-light);
-            overflow: hidden;
-        }
-
-        /* * =================================
-         * ANIMAÇÕES DO FUNDO DO MAR
-         * =================================
-        */
-        .sea-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .jellyfish, .fish-group {
-            position: absolute;
-            will-change: transform;
-            background-size: contain;
-            background-repeat: no-repeat;
-        }
-
-        .jellyfish {
-            width: 80px;
-            height: 120px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 150'%3E%3Cpath d='M50 0 C20 0 10 30 10 50 C10 80 20 100 50 100 C80 100 90 80 90 50 C90 30 80 0 50 0 Z' fill='%23FFC0CB' stroke='black' stroke-width='2'/%3E%3Cline x1='30' y1='100' x2='25' y2='130' stroke='black' stroke-width='2'/%3E%3Cline x1='40' y1='100' x2='40' y2='140' stroke='black' stroke-width='2'/%3E%3Cline x1='50' y1='100' x2='50' y2='150' stroke='black' stroke-width='2'/%3E%3Cline x1='60' y1='100' x2='60' y2='140' stroke='black' stroke-width='2'/%3E%3Cline x1='70' y1='100' x2='75' y2='130' stroke='black' stroke-width='2'/%3E%3C/svg%3E");
-            animation: swim-up-down 25s ease-in-out infinite;
-        }
-
-        .fish-group {
-            width: 80px;
-            height: 50px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60'%3E%3Cpath d='M0 30 C20 10 40 10 60 30 C40 50 20 50 0 30 Z' fill='%23A060E3' stroke='black' stroke-width='2'/%3E%3Cpath d='M50 30 C70 10 90 10 110 30 C90 50 70 50 50 30 Z' fill='%23A060E3' stroke='black' stroke-width='2'/%3E%3C/svg%3E");
-            animation: swim-across 20s linear infinite;
-        }
-        
-        .jellyfish.j1 { left: 15%; animation-duration: 28s; }
-        .jellyfish.j2 { left: 80%; animation-duration: 22s; animation-delay: 5s; }
-        .fish-group.f1 { bottom: 15%; animation-duration: 25s; animation-delay: 2s; }
-
-        @keyframes swim-up-down { 0%, 100% { transform: translateY(110vh); } 50% { transform: translateY(-20vh); } }
-        @keyframes swim-across { 0% { transform: translateX(-100px) scaleX(1); } 49.9% { transform: translateX(100vw) scaleX(1); } 50% { transform: translateX(100vw) scaleX(-1); } 99.9% { transform: translateX(-100px) scaleX(-1); } 100% { transform: translateX(-100px) scaleX(1); } }
-
-        /* * =================================
-         * LAYOUT, CABEÇALHO E NAVEGAÇÃO
-         * =================================
-        */
-        .container {
-            position: relative;
-            z-index: 2;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        header {
-            padding: 20px 40px;
-            flex-shrink: 0;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-btn {
-            background-color: var(--accent-yellow);
-            color: var(--text-dark);
-            text-decoration: none;
-            padding: 8px 25px;
-            border: 3px solid var(--text-dark);
-            border-radius: 20px;
-            font-weight: bold;
-            box-shadow: 0 4px 0 0 var(--text-dark);
-            transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
-            margin: 0 5px;
-            cursor: pointer;
-        }
-        
-        /* Botão ativo */
-        .nav-btn.active {
-            background-color: var(--panel-bg);
-            color: var(--text-dark);
-        }
-
-        .nav-btn:hover {
-            transform: translateY(2px);
-            box-shadow: 0 2px 0 0 var(--text-dark);
-        }
-
-        .dropdown { position: relative; display: inline-block; }
-        .dropdown-content { display: none; position: absolute; right: 0; background-color: var(--background-sea); min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 10; border: 2px solid var(--text-dark); border-radius: 10px; padding: 5px 0; opacity: 0; transform: translateY(-10px); transition: opacity 0.2s ease, transform 0.2s ease; }
-        .dropdown-content a { color: var(--text-light); padding: 12px 16px; text-decoration: none; display: block; text-align: center; font-weight: bold; }
-        .dropdown-content a:hover { background-color: #005a8e; }
-        .dropdown:hover .dropdown-content { display: block; opacity: 1; transform: translateY(0); }
-
-        /* * =================================
-         * PAINEL "SOBRE"
-         * =================================
-        */
-        main {
-            flex-grow: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            overflow: hidden;
-        }
-
-        .about-panel {
-            background-color: var(--panel-bg);
-            color: var(--text-dark);
-            width: 100%;
-            max-width: 600px;
-            height: 80vh;
-            max-height: 700px;
-            border: 4px solid var(--text-dark);
-            border-radius: 20px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-            padding: 20px 30px;
-            overflow-y: auto; /* Permite a rolagem do conteúdo */
-        }
-        
-        /* Estilizando a barra de rolagem para combinar com o design */
-        .about-panel::-webkit-scrollbar {
-            width: 12px;
-        }
-        .about-panel::-webkit-scrollbar-track {
-            background: #d4eaf7;
-            border-radius: 10px;
-        }
-        .about-panel::-webkit-scrollbar-thumb {
-            background-color: var(--background-sea);
-            border-radius: 10px;
-            border: 3px solid #d4eaf7;
-        }
-
-        .about-panel h2 {
-            font-family: var(--font-title);
-            font-size: 3em;
-            text-align: center;
-            margin-top: 0;
-            margin-bottom: 20px;
-            color: var(--background-sea);
-        }
-        
-        .about-panel .project-description {
-            font-size: 1.1em;
-            line-height: 1.6;
-            text-align: justify;
-            margin-bottom: 30px;
-        }
-
-        .about-panel h3 {
-            font-family: var(--font-title);
-            font-size: 2.2em;
-            border-bottom: 3px solid var(--background-sea);
-            padding-bottom: 5px;
-            margin-bottom: 25px;
-            color: var(--background-sea);
-        }
-        
-        .developer-card {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 30px;
-        }
-        
-        .developer-card img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 3px solid var(--text-dark);
-            margin-right: 20px;
-            flex-shrink: 0;
-            object-fit: cover; /* Garante que a imagem não se distorça */
-        }
-        
-        .developer-info h4 {
-            font-family: var(--font-title);
-            font-size: 1.8em;
-            margin: 0 0 5px 0;
-        }
-        
-        .developer-info p {
-            margin: 0 0 8px 0;
-            line-height: 1.4;
-        }
-        
-        .developer-info .role {
-            font-weight: bold;
-            color: #555;
-        }
-        
-        .developer-info .impact-phrase {
-            font-style: italic;
-            color: #333;
-            margin-top: 10px;
-        }
-        
-        .developer-info .contacts a {
-            color: var(--background-sea);
-            font-weight: bold;
-            text-decoration: none;
-        }
-        
-        .developer-info .contacts a:hover {
-            text-decoration: underline;
-        }
-
-    </style>
 </head>
 <body>
 
@@ -257,15 +23,15 @@
         <header>
             <nav>
                 <div class="nav-left">
-                    <a href="#" class="nav-btn">Fases</a>
+                    <a href="./levels.html" class="nav-btn">Fases</a>
                     <a href="#" class="nav-btn active">Sobre</a>
                 </div>
                 <div class="nav-right">
                     <div class="dropdown">
                         <button class="nav-btn">Conta</button>
                         <div class="dropdown-content">
-                            <a href="#">Entrar</a>
-                            <a href="#">Criar Conta</a>
+                            <a href="./login.html">Entrar</a>
+                            <a href="./register.html">Criar Conta</a>
                         </div>
                     </div>
                 </div>
@@ -295,9 +61,9 @@
                     </div>
                     
                     <div class="developer-card">
-                        <img src="https://i.pinimg.com/564x/e8/aa/07/e8aa078c77e8bcf867263d2af2b94244.jpg" alt="Foto do desenvolvedor Guilherme">
+                        <img src="https://i.pinimg.com/564x/e8/aa/07/e8aa078c77e8bcf867263d2af2b94244.jpg" alt="Foto da desenvolvedora Clarisse">
                         <div class="developer-info">
-                            <h4>Guilherme</h4>
+                            <h4>Clarisse</h4>
                             <p class="role">Artista 2D e Designer de UI/UX</p>
                              <p class="contacts">Contato: <a href="#">portfolio@exemplo.com</a></p>
                             <p class="impact-phrase">"Cada pixel, uma gota de criatividade no oceano digital."</p>
