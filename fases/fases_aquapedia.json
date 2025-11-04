@@ -2,7 +2,7 @@
   "fases": [
     {
       "id_fase": 1,
-      "texto_fase": "Bem-vindo à Aquapédia, explorador. Nossa primeira expedição nos leva ao Oceano Atlântico...",
+      "texto_fase": "Bem-vindo à Aquapédia, explorador. Nossa primeira expedição nos leva ao Oceano Atlântico. Ele não é apenas o segundo maior oceano do mundo; é uma das principais 'rodovias' marítimas da história humana, palco de explorações e comércio que conectaram mundos. Ele se estende como uma ponte líquida colossal, separando as Américas a oeste, da Europa e África a leste. Sua característica mais vital é, sem dúvida, a Corrente do Golfo. Pense nela como um gigantesco rio de água quente dentro do oceano, funcionando como uma esteira rolante que transporta calor do Caribe até o norte da Europa. Essa corrente é tão poderosa que é a principal responsável por regular o clima global, garantindo invernos mais amenos em locais que, de outra forma, seriam congelantes. As águas do Atlântico variam de tropicais a polares, abrigando uma biodiversidade vasta. Nos recifes quentes e águas costeiras, encontramos a imensa Tartaruga de Couro, a maior de todas as tartarugas, e o gentil Peixe-boi-marinho, um herbívoro que prefere águas rasas. Mais ao norte, nas águas frias e ricas, o Bacalhau-do-atlântico foi, por séculos, um pilar da economia e alimentação. E patrulhando as águas abertas, temos o Tubarão Mako, considerado um dos animais mais rápidos do oceano. E, claro, nenhum passeio pelo Atlântico estaria completo sem mencionar o lendário Triângulo das Bermudas, uma área mítica onde navios e aviões supostamente desapareceram. Embora a ciência moderna aponte para tempestades súbitas e correntes traiçoeiras como explicações mais prováveis, o mistério alimenta nossa imaginação.",
       "palavras_coletadas": [
         "Atlântico",
         "Américas",
@@ -63,7 +63,7 @@
     },
     {
       "id_fase": 2,
-      "texto_fase": "Prenda a respiração, explorador. Estamos entrando no mestre de todos os oceanos: o Pacífico...",
+      "texto_fase": "Prenda a respiração, explorador. Estamos entrando no mestre de todos os oceanos: o Pacífico. Este é um verdadeiro colosso de água, tão vasto que cobre sozinho mais de 30% da superfície do planeta. Todos os continentes da Terra poderiam caber dentro dele. Sua característica mais marcante é geológica: o Círculo de Fogo. Este não é um lugar, mas um anel de 40.000 km que rodeia quase todo o oceano, marcado por intensa atividade tectônica. Isso faz do Pacífico o epicentro de cerca de 90% de todos os terremotos e lar da maioria dos vulcões ativos do mundo. É essa mesma atividade tectônica que esculpiu o ponto mais profundo do nosso planeta, a Fossa das Marianas. Um abismo tão profundo que, se o Monte Everest fosse colocado lá, seu pico ainda estaria a mais de 2 km abaixo da superfície. A vida no Pacífico precisa adaptar-se a esses extremos. Em seus recifes de coral quentes e coloridos, encontramos o vibrante Peixe-palhaço, que vive em simbiose perfeita com as anêmonas tóxicas. Em contraste total, nas águas geladas do norte, o cenário é outro. Vemos a social e vocal Beluga, conhecida como o 'canário do mar'; a impressionante Morsa, com suas presas usadas para perfurar o gelo; e a Orca, um predador incrivelmente inteligente que caça em grupos coordenados.",
       "palavras_coletadas": [
         "Pacífico",
         "Fossa das Marianas",
@@ -116,7 +116,7 @@
     },
     {
       "id_fase": 3,
-      "texto_fase": "Nossa próxima parada nos leva ao oceano mais quente do mundo: o Índico...",
+      "texto_fase": "Nossa próxima parada nos leva ao oceano mais quente do mundo: o Índico. Aninhado entre a África, Ásia e Austrália, ele é um oceano primariamente tropical, com águas que parecem um convite ao mergulho. A identidade deste oceano é definida pelo clima, especificamente pelas Monções. Elas não são apenas chuvas; são ventos sazonais massivos que mudam de direção. Durante meses, eles sopram do mar para a terra, trazendo chuvas torrenciais essenciais para a agricultura na Ásia, e depois invertem, trazendo ar seco. A vida de bilhões de pessoas depende desse ritmo. Sendo um oceano quente e relativamente calmo, o Índico é o berçário perfeito para alguns dos mais extensos e vibrantes recifes de coral do planeta. E nesses recifes, a vida explode em cores. Podemos encontrar o Cirurgião-Patela, famoso por sua cor azul-royal, e o Cangulo-de-cauda-rosa, com suas cores psicodélicas. Nas águas mais calmas e costeiras, vive o dócil Dugongo, um mamífero herbívoro que se alimenta de ervas marinhas. E cruzando o oceano aberto, encontramos o maior de todos os peixes, o gentil gigante Tubarão-Baleia, que se alimenta apenas filtrando plâncton.",
       "palavras_coletadas": [
         "Índico",
         "Tropical",
@@ -169,7 +169,7 @@
     },
     {
       "id_fase": 4,
-      "texto_fase": "Prepare seu traje térmico, pois chegamos ao topo do mundo. O Oceano Ártico...",
+      "texto_fase": "Prepare seu traje térmico, pois chegamos ao topo do mundo. O Oceano Ártico é o menor e mais raso dos cinco, localizado inteiramente no Polo Norte e quase totalmente cercado por continentes. A característica que define este lugar é, sem dúvida, o gelo marinho. Esta não é apenas água congelada; é uma vasta plataforma flutuante que funciona como o habitat central do ecossistema. É sobre esse gelo que a vida descansa, caça e se reproduz. Infelizmente, esta plataforma vital está derretendo em um ritmo alarmante. A vida aqui é forjada em extremos, adaptada a um ciclo brutal de luz e escuridão. Os habitantes devem sobreviver à Noite polar, um período de seis meses de escuridão contínua onde o sol jamais nasce. Os animais aqui são mestres da adaptação: o Urso-Polar, o maior predador terrestre, depende totalmente do gelo para caçar sua presa principal, a Foca-da-Groenlândia. Nas águas geladas, encontramos a Baleia-da-Groenlândia, um animal magnífico que pode viver mais de 200 anos, e o mítico Narval, o 'unicórnio do mar', cujo dente em espiral é, na verdade, um sensor complexo.",
       "palavras_coletadas": [
         "Ártico",
         "Polo Norte",
@@ -218,7 +218,7 @@
     },
     {
       "id_fase": 5,
-      "texto_fase": "Nossa expedição termina no local mais frio, ventoso e selvagem do planeta. O Oceano Antártico...",
+      "texto_fase": "Nossa expedição termina no local mais frio, ventoso e selvagem do planeta. O Oceano Antártico, por vezes chamado de Oceano Austral, é o que circunda o continente congelado da Antártida. Ele é o único oceano que flui ao redor de todo o globo sem ser interrompido por continentes, criando a Corrente Circumpolar Antártica, a mais forte do mundo, que isola o continente e o mantém gelado. Apesar das condições extremas, este oceano transborda vida, e tudo graças a uma criatura minúscula: o Krill-Antártico. Este pequeno crustáceo, parecido com um camarão, forma cardumes tão densos que podem ser vistos do espaço. Ele é a base de toda a cadeia alimentar local. Baleias, focas, lulas e pinguins — quase tudo aqui depende diretamente do krill para sobreviver. A presença humana é mínima, composta apenas por visitantes em Estações científicas isoladas, dedicadas a estudar o clima e este ecossistema único. Os verdadeiros habitantes são criaturas de resistência incrível. O Pinguim-Imperador é famoso por se reproduzir durante o inverno implacável, e a Foca-de-Weddell é uma mergulhadora de elite, capaz de prender a respiração por mais de uma hora para caçar sob o gelo espesso.",
       "palavras_coletadas": [
         "Antártico",
         "Antártida",
