@@ -92,6 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             slot.textContent = word;
                             slot.dataset.value = word;
                             draggedToken = null;
+                
                         } else if (slot.classList.contains('image-slot') && type === 'animal') {
                             // Substitua por imagens reais. Usando pravatar como placeholder.
                             slot.style.backgroundImage = `url(https://mergulholivre.com.br/wp-content/uploads/2023/07/Tubarao-Mako-peixe-de-agua-salgada-foto-6.webp)`;
