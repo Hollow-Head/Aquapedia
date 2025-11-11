@@ -1,9 +1,13 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="cp" value="${pageContext.request.contextPath}"/>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar Conta - Aquapédia</title>
+    <title>Criar Conta - AquapÃ©dia</title>
     <link rel="stylesheet" type="" href="./css/style.css">
 
     <!-- Importando a fonte do Google Fonts -->
@@ -14,14 +18,14 @@
 </head>
 <body>
 
-    <!-- Elementos animados no fundo da página -->
+    <!-- Elementos animados no fundo da pÃ¡gina -->
     <div class="sea-background">
         <div class="jellyfish j1"></div>
         <div class="jellyfish j2"></div>
         <div class="fish-group f1"></div>
     </div>
 
-    <!-- Conteúdo principal da página -->
+    <!-- ConteÃºdo principal da pÃ¡gina -->
     <div class="container">
         <header>
             <nav>
@@ -39,10 +43,13 @@
             <div class="register-panel">
                 <h2>Criar</h2>
                 
-                <form action="#">
+                <form method="post" action="${cp}/processaCadastro">
                     <div class="input-group">
                         <label for="email">Insira seu email</label>
                         <input type="email" id="email" name="email" placeholder="seuemail@gmail.com">
+                        <div>
+                            ${error}
+                        </div>
                     </div>
 
                     <div class="input-group">
@@ -51,7 +58,7 @@
                     </div>
                     
                     <div class="input-group">
-                        <label for="password">Insira sua senha (mínimo de 8 caracteres)</label>
+                        <label for="password">Insira sua senha (mÃ­nimo de 8 caracteres)</label>
                         <input type="password" id="password" name="password">
                     </div>
 
@@ -63,7 +70,7 @@
                     <button type="submit" class="submit-btn">Criar conta</button>
                     
                     <div class="form-switch">
-                        <span>Já possui cadastro? <a href="./login.html">Entrar na sua conta</a></span>
+                        <span>JÃ¡ possui cadastro? <a href="./login.html">Entrar na sua conta</a></span>
                     </div>
                 </form>
             </div>

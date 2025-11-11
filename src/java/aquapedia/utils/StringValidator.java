@@ -1,4 +1,4 @@
-package utils;
+package aquapedia.utils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -12,15 +12,18 @@ public class StringValidator {
     /**
      * Checks if the email is valid using the following REGEX: {@code ^[\\w|ç]+@[\\w|ç]+\\..+}
      * @param email The email of the user.
-     * @return {@code true} if the email is valid, {@code false} otherwise.
+     * @return {@code null} if the email is valid, {@code String} otherwise, containing the specific error.
      */
-    public static boolean isEmailValid(String email){
+    public static String isEmailValid(String email){
         if (email == null || email.isEmpty()) {
-            return false;
+            return "O email não pode estar vazio";
         }
 
         Matcher matcher = EMAIL_PATTERN.matcher(email);
-        return matcher.matches();
+        if (matcher.matches()){
+            return null;
+        }
+        return "O email está inválido";
     }
 
     /**
@@ -63,6 +66,19 @@ public class StringValidator {
             return "O apelido não pode conter símbolos";
         }
         return null; // Is valid.
+    }
+
+    /**
+     * Check if both passwords are equal.
+     * @param password1 The first password;
+     * @param password2 The second password;
+     * @return {@code null} if the passwords are equal, {@code String} otherwise, containing the specific error.
+     */
+    public static String arePasswordEquals(String password1, String password2){
+        if (password1.equals(password2)){
+            return null;
+        }
+        return "As senhas devem ser semelhantes";
     }
     
 }
