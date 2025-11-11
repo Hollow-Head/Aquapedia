@@ -1,0 +1,16 @@
+:root {
+    --background-sea: #3188D4;
+    --panel-blue: #0A6EBD;
+    --panel-reading-blue: #1A79C3;
+    --panel-bg: #F0F8FF;
+    --accent-yellow: #FFD700;
+    --danger-red: #d20f39;
+    --correct-green: #28a745;
+    --incorrect-red: #dc3545;
+    --text-dark: #000000;
+    --text-light: #FFFFFF;
+    --jellyfish-pink: #FFC0CB;
+    --fish-purple: #A060E3;
+    --circle-bg: #FFFFFF;
+    --blank-bg: #085C9D;
+}
