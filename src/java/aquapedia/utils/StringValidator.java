@@ -74,7 +74,7 @@ public class StringValidator {
      * @param password2 The second password;
      * @return {@code null} if the passwords are equal, {@code String} otherwise, containing the specific error.
      */
-    public static String arePasswordEquals(String password1, String password2){
+    public static String arePasswordsEqual(String password1, String password2){
         if (password1.equals(password2)){
             return null;
         }

@@ -12,6 +12,6 @@ public class ConnectionFactory {
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection("jdbc:mariadb://localhost:3306/AQUAPEDIA",
                 "root",
-                "root");
+                "");
     }
 }

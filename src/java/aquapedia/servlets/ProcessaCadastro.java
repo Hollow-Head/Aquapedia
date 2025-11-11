@@ -16,6 +16,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
 import java.sql.Connection;
+import java.util.Arrays;
 
 /**
  *
@@ -49,33 +50,45 @@ public class ProcessaCadastro extends HttpServlet {
             String email = request.getParameter("email");
             String senha = request.getParameter("password");
             String confirmarSenha = request.getParameter("confirm-password");
-
+            
+            
             //validar o senha e confirma senha
             //validar senha e email e apelido
             String validaNome = StringValidator.isNicknameValid(nome);
-            boolean validaEmail = StringValidator.isEmailValid(email);
+            String validaEmail = StringValidator.isEmailValid(email);
             String validaSenha = StringValidator.isPasswordValid(senha);
+            String conferirSenhas = StringValidator.arePasswordsEqual(senha, confirmarSenha);
+            
+            String erro = null;
 
-            if (nome == null || email == null || senha == null || confirmarSenha == null) {
-                request.setAttribute("erro", "Por Favor, Preencha todos os campos");
-                disp = request.getRequestDispatcher("/register.jsp");
-                disp.forward(request, response);
+            if (nome.isEmpty() || email.isEmpty() || senha.isEmpty() || confirmarSenha.isEmpty()) {
+                erro = "Por Favor, Preencha todos os campos";
+            } else if(conferirSenhas != null) {
+                erro = conferirSenhas;
             } else if (validaNome != null) {
-                request.setAttribute("erro", validaNome);
-                disp = request.getRequestDispatcher("/");
-                disp.forward(request, response);
+                erro = validaNome;
+            } else if (validaEmail != null){
+                erro = validaEmail;
+            } else if(validaSenha != null){
+                erro = validaSenha;
             }
-
+            
+            if (erro != null)
+            {
+                throw new Exception(erro);
+                
+            }
             try {
                 Usuario usuario = new Usuario();
                 usuario.setEmail(email);
                 usuario.setNome(nome);
-                usuario.setSenha(senha);
+                usuario.setSenha(PasswordEncoder.encoder(senha).toString());
 
                 dao.salvar(usuario);
 
                 disp = request.getRequestDispatcher(
-                        "/");
+                        "/index.jsp");
+                disp.forward(request, response);
             } catch (Exception e) {
                 if (dao != null) {
                     try {
@@ -86,9 +99,11 @@ public class ProcessaCadastro extends HttpServlet {
                 }
             }
         } catch (Exception e) {
-            //pegar erros das senhas, email e apelido
+            System.out.println("deu erro ó " + e);
+            request.setAttribute("erro", e.getMessage());
+            disp = request.getRequestDispatcher("/register.jsp");
+            disp.forward(request, response);
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
