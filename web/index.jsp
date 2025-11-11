@@ -18,15 +18,22 @@
 </head>
 
 <body>
-
-  <!-- Elementos animados no fundo da pÃ¡gina -->
+  
+  <div>
+     <div class="wave"></div>
+     <div class="wave"></div>
+     <div class="wave"></div>
+  </div>
+  
+  <!-- Elementos animados no fundo da página -->
   <div class="sea-background">
     <div class="jellyfish j1"></div>
     <div class="jellyfish j2"></div>
     <div class="fish-group f1"></div>
   </div>
 
-  <!-- ConteÃºdo principal da pÃ¡gina -->
+  
+  <!-- Conteúdo principal da página -->
   <div class="container" id="page-content">
     <header>
       <nav>
@@ -48,6 +55,17 @@
 
     <main>
       <h1>AQUAPÉDIA</h1>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
       <a href="levels.html" class="play-button">JOGAR</a>
     </main>
   </div>
