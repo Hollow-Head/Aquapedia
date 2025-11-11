@@ -1,4 +1,4 @@
-package utils;
+package aquapedia.utils;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;

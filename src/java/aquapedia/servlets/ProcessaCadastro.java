@@ -8,7 +8,7 @@ import aquapedia.dao.UsuarioDAO;
 import aquapedia.entidades.Usuario;
 import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
-import java.io.PrintWriter;
+import aquapedia.utils.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -21,7 +21,7 @@ import java.sql.Connection;
  *
  * @author Samuel
  */
-@WebServlet(name = "ProcessaCadastro", urlPatterns = {"/ProcessaCadastro"})
+@WebServlet(name = "ProcessaCadastro", urlPatterns = {"/processaCadastro"})
 public class ProcessaCadastro extends HttpServlet {
 
     /**
@@ -35,7 +35,60 @@ public class ProcessaCadastro extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+
+        System.out.println("aaENTROU");
+        String acao = request.getParameter("acao");
+        UsuarioDAO dao = null;
+        RequestDispatcher disp = null;
+
+        try {
+
+            dao = new UsuarioDAO();
+
+            String nome = request.getParameter("nickname");
+            String email = request.getParameter("email");
+            String senha = request.getParameter("password");
+            String confirmarSenha = request.getParameter("confirm-password");
+
+            //validar o senha e confirma senha
+            //validar senha e email e apelido
+            String validaNome = StringValidator.isNicknameValid(nome);
+            boolean validaEmail = StringValidator.isEmailValid(email);
+            String validaSenha = StringValidator.isPasswordValid(senha);
+
+            if (nome == null || email == null || senha == null || confirmarSenha == null) {
+                request.setAttribute("erro", "Por Favor, Preencha todos os campos");
+                disp = request.getRequestDispatcher("/register.jsp");
+                disp.forward(request, response);
+            } else if (validaNome != null) {
+                request.setAttribute("erro", validaNome);
+                disp = request.getRequestDispatcher("/");
+                disp.forward(request, response);
+            }
+
+            try {
+                Usuario usuario = new Usuario();
+                usuario.setEmail(email);
+                usuario.setNome(nome);
+                usuario.setSenha(senha);
+
+                dao.salvar(usuario);
+
+                disp = request.getRequestDispatcher(
+                        "/");
+            } catch (Exception e) {
+                if (dao != null) {
+                    try {
+                        dao.fecharConexao();
+                    } catch (SQLException exc) {
+                        exc.printStackTrace();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            //pegar erros das senhas, email e apelido
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -64,47 +117,7 @@ public class ProcessaCadastro extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String acao = request.getParameter( "acao" );
-        UsuarioDAO dao = null;
-        RequestDispatcher disp = null;
-        
-        try {
-            
-            dao = new UsuarioDAO();
-            
-            String nome = request.getParameter("nickname");
-            String email = request.getParameter("email");
-            String senha = request.getParameter("password");
-            String confirmarSenha = request.getParameter("confirm-password");
-             
-            //validar senha e email e apelido
-            
-            if(nome == null || email == null || senha == null){
-                
-            }
-            
-            try {
-                Usuario usuario = new Usuario();
-                usuario.setEmail(email);
-                usuario.setNome(nome);
-                usuario.setSenha(senha);
-                
-                dao.salvar(usuario);
-                
-                disp = request.getRequestDispatcher(
-                        "/" );
-            } catch (Exception e) {
-                 if ( dao != null ) {
-                try {
-                    dao.fecharConexao();
-                } catch ( SQLException exc ) {
-                    exc.printStackTrace();
-                }
-            }
-            }
-        } catch (Exception e) {
-            //pegar erros das senhas, email e apelido
-        }
+        processRequest(request, response);
     }
 
     /**

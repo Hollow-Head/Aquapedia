@@ -1,10 +1,13 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="cp" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aquapédia - Bem-vindo!</title>
+  <title>AquapÃ©dia - Bem-vindo!</title>
   <link rel="stylesheet" href="./css/style.css">
 
   <!-- Importando a fonte do Google Fonts -->
@@ -16,14 +19,14 @@
 
 <body>
 
-  <!-- Elementos animados no fundo da página -->
+  <!-- Elementos animados no fundo da pÃ¡gina -->
   <div class="sea-background">
     <div class="jellyfish j1"></div>
     <div class="jellyfish j2"></div>
     <div class="fish-group f1"></div>
   </div>
 
-  <!-- Conteúdo principal da página -->
+  <!-- ConteÃºdo principal da pÃ¡gina -->
   <div class="container" id="page-content">
     <header>
       <nav>
@@ -35,8 +38,8 @@
           <div class="dropdown">
             <button class="nav-btn">Conta</button>
             <div class="dropdown-content">
-              <a href="./login.jsp">Entrar</a>
-              <a href="./register.jsp">Criar Conta</a>
+              <a href="${cp}/login.jsp">Entrar</a>
+              <a href="${cp}/register.jsp">Criar Conta</a>
             </div>
           </div>
         </div>
