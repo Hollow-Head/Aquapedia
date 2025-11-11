@@ -4,6 +4,9 @@
  */
 package aquapedia.servlets;
 
+import aquapedia.dao.UsuarioDAO;
+import aquapedia.entidades.Usuario;
+import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -11,6 +14,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.sql.SQLException;
+import java.sql.Connection;
 
 /**
  *
@@ -31,18 +36,6 @@ public class ProcessaCadastro extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ProcessaCadastro</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ProcessaCadastro at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -71,7 +64,47 @@ public class ProcessaCadastro extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String acao = request.getParameter( "acao" );
+        UsuarioDAO dao = null;
+        RequestDispatcher disp = null;
+        
+        try {
+            
+            dao = new UsuarioDAO();
+            
+            String nome = request.getParameter("nickname");
+            String email = request.getParameter("email");
+            String senha = request.getParameter("password");
+            String confirmarSenha = request.getParameter("confirm-password");
+             
+            //validar senha e email e apelido
+            
+            if(nome == null || email == null || senha == null){
+                
+            }
+            
+            try {
+                Usuario usuario = new Usuario();
+                usuario.setEmail(email);
+                usuario.setNome(nome);
+                usuario.setSenha(senha);
+                
+                dao.salvar(usuario);
+                
+                disp = request.getRequestDispatcher(
+                        "/" );
+            } catch (Exception e) {
+                 if ( dao != null ) {
+                try {
+                    dao.fecharConexao();
+                } catch ( SQLException exc ) {
+                    exc.printStackTrace();
+                }
+            }
+            }
+        } catch (Exception e) {
+            //pegar erros das senhas, email e apelido
+        }
     }
 
     /**
