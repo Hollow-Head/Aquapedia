@@ -87,7 +87,7 @@ public class StringValidator {
      * Validate if both string used in the email or password of the login are equal.
      * @param str1 The first string;
      * @param str2 The second string;
-     * @return {@code null} if is valid, {@String} otherwise, containing the error message.
+     * @return {@code null} if is valid, {@code String} otherwise, containing the error message.
      */
     public static String validateLogin(String str1, String str2){
         return str1.equals(str2) ? null : LOGIN_ERROR_MESSAGE;
