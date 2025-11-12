@@ -30,7 +30,7 @@
             <header>
                 <nav>
                     <div class="nav-left">
-                        <a href="./levels.html" class="nav-btn">Fases</a>
+                        <!-- <a href="./levels.html" class="nav-btn">Fases</a> -->
                         <a href="./about.html" class="nav-btn">Sobre</a>
                     </div>
                     <!-- <div class="nav-right">
