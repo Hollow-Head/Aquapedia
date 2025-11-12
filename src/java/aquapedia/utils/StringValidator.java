@@ -84,12 +84,31 @@ public class StringValidator {
     }
 
     /**
+     * Check if the nicknames are equals or if the emails are equals.
+     * @param nickname1 First nickname;
+     * @param nickname2 Second nickname;
+     * @param email1 First email;
+     * @param email2 Second email;
+     * @return {@code null} if is valid to register, {@code String} otherwise, containing the specific error.
+     */
+    public static String isValidToRegister(String nickname1, String nickname2, String email1, String email2){
+        if (nickname1.equals(nickname2)){
+            return "Já existe um usuário com este apelido.";
+        }
+        if (email1.equals(email2)){
+            return "Já existe um usuário com este email.";
+        }
+
+        return null;
+    }
+
+    /**
      * Validate if both string used in the email or password of the login are equal.
      * @param str1 The first string;
      * @param str2 The second string;
      * @return {@code null} if is valid, {@code String} otherwise, containing the error message.
      */
-    public static String validateLogin(String str1, String str2){
+    public static String isValidToLogin(String str1, String str2){
         return str1.equals(str2) ? null : LOGIN_ERROR_MESSAGE;
     }
 
