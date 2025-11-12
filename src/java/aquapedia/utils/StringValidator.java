@@ -9,6 +9,8 @@ public class StringValidator {
 
     private static final Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX);
 
+    static final String LOGIN_ERROR_MESSAGE = "Email e/ou senha está incorreto.";
+
     /**
      * Checks if the email is valid using the following REGEX: {@code ^[\\w|ç]+@[\\w|ç]+\\..+}
      * @param email The email of the user.
@@ -80,5 +82,15 @@ public class StringValidator {
         }
         return "As senhas devem ser semelhantes";
     }
-    
+
+    /**
+     * Validate if both string used in the email or password of the login are equal.
+     * @param str1 The first string;
+     * @param str2 The second string;
+     * @return {@code null} if is valid, {@String} otherwise, containing the error message.
+     */
+    public static String validateLogin(String str1, String str2){
+        return str1.equals(str2) ? null : LOGIN_ERROR_MESSAGE;
+    }
+
 }
