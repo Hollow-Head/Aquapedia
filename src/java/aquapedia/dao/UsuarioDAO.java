@@ -5,11 +5,13 @@
 package aquapedia.dao;
 
 import aquapedia.entidades.Usuario;
+import aquapedia.utils.StringValidator;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.PreparedStatement;
 /**
  *
  * @author Aloísio Marques Lingo Filho BV3032558
@@ -141,6 +143,63 @@ public class UsuarioDAO extends DAO<Usuario> {
         stmt.close();
         
         return usuario;
+    }
+    
+    public Usuario buscarPorUsuario (String email, String senha)throws SQLException{
+        String sql = "SELECT 1 FROM usuarios WHERE USR_EMAIL = ? OR USR_SENHA = ?";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setString(1, email);
+        stmt.setString(2, senha);
+        ResultSet rs;
+        rs  = stmt.executeQuery();
+        Usuario usuario;
+        if(rs.next()){
+            String nomeEncontrado = rs.getString("USR_NOME");
+            String emailEncontrado = rs.getString("USR_EMAIL");
+            String progressoEncontrado = rs.getString("USR_PROGRESSO");
+            String fotoEncontrada = rs.getString("USR_FOTO");
+            String idEncontrado = rs.getString("USR_ID");
+            
+            
+            try {
+                usuario = new Usuario();
+                usuario.setNome(nomeEncontrado);
+                usuario.setEmail(emailEncontrado);
+                usuario.setProgresso(Integer.parseInt(progressoEncontrado));
+                usuario.setFoto(Integer.parseInt(fotoEncontrada));
+                usuario.setId(Integer.parseInt(idEncontrado));
+                return usuario;
+            } catch (Exception e) {
+                return null;
+            }
+        } else {
+            return null;
+        }
+    }
+    
+ /**
+ * Verifica se um e-mail já está cadastrado.
+ * @param apelido O apelido a ser verificado
+ * @param email O e-mail a ser verificado.
+ * @return String se tiver um erro, null caso contrario.
+ */
+    public String verificarSeJáExisteUsuário(String apelido, String email) throws SQLException{
+        String sql = "SELECT 1 FROM usuarios WHERE USR_EMAIL = ? OR USR_NOME = ?";
+        
+            PreparedStatement stmt = conexao.prepareStatement(sql);
+            stmt.setString(1, email);
+            stmt.setString(2, apelido);
+            ResultSet rs;
+            
+            rs  = stmt.executeQuery();
+            if(rs.next() == true){
+                String nomeEncontrado = rs.getString("USR_NOME");
+                String emailEncontrado = rs.getString("USR_EMAIL");
+                String erro = StringValidator.isValidToRegister(apelido, nomeEncontrado, email, emailEncontrado);
+                return erro;
+            } else {
+               return null; 
+            }
     }
     
     

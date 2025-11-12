@@ -92,9 +92,12 @@ public class StringValidator {
      * @return {@code null} if is valid to register, {@code String} otherwise, containing the specific error.
      */
     public static String isValidToRegister(String nickname1, String nickname2, String email1, String email2){
+        if(nickname1.equals(nickname2) && email1.equals(email2)){
+            return "já existe um usuário com este apelido e email";
+        }
         if (nickname1.equals(nickname2)){
             return "Já existe um usuário com este apelido.";
-        }
+        } else
         if (email1.equals(email2)){
             return "Já existe um usuário com este email.";
         }

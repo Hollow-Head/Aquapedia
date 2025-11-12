@@ -14,6 +14,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.sql.SQLException;
 import java.sql.Connection;
 import java.util.Arrays;
@@ -22,8 +23,8 @@ import java.util.Arrays;
  *
  * @author Samuel
  */
-@WebServlet(name = "ProcessaCadastro", urlPatterns = {"/processaCadastro"})
-public class ProcessaCadastro extends HttpServlet {
+@WebServlet(name = "ProcessaConta", urlPatterns = {"/processaConta"})
+public class ProcessaConta extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,13 +37,15 @@ public class ProcessaCadastro extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        
 
-        System.out.println("aaENTROU");
         String acao = request.getParameter("acao");
         UsuarioDAO dao = null;
         RequestDispatcher disp = null;
-
-        try {
+        
+        if(acao.equals("cadastro")){
+            try {
 
             dao = new UsuarioDAO();
 
@@ -72,7 +75,11 @@ public class ProcessaCadastro extends HttpServlet {
             } else if(validaSenha != null){
                 erro = validaSenha;
             }
+            if(dao.verificarSeJáExisteUsuário(nome, email) != null){
+                erro = dao.verificarSeJáExisteUsuário(nome, email);
+            }
             
+           
             if (erro != null)
             {
                 throw new Exception(erro);
@@ -104,6 +111,43 @@ public class ProcessaCadastro extends HttpServlet {
             disp = request.getRequestDispatcher("/register.jsp");
             disp.forward(request, response);
         }
+           
+     
+        } else if(acao.equals("login")){
+            try {
+                dao = new UsuarioDAO();
+
+                String email = request.getParameter("email");
+                String senha = request.getParameter("password");
+                
+                String erro = null;
+                
+                if(email == null || senha == null){
+                    erro = "Por Favor, Preencha todos os campos";
+                }
+                
+                if(dao.buscarPorUsuario(email, PasswordEncoder.encoder(senha).toString()) == null){
+                    erro = "Esse aquapédico não existe";
+                }
+                
+                if(erro == null){
+                    Usuario usuario = new Usuario();
+                    usuario = dao.buscarPorUsuario(email, senha);
+                    
+                    HttpSession sessao = request.getSession(true);
+                    sessao.setAttribute("usuarioLogado", usuario);
+                    response.sendRedirect(request.getContextPath() + "/index.jsp");
+                } else {
+                    throw new Exception(erro);
+                }
+            } catch (Exception e) {
+                request.setAttribute("erro", e.getMessage());
+                disp = request.getRequestDispatcher("/login.jsp");
+                disp.forward(request, response);
+            }
+        }
+
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

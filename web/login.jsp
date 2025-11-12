@@ -38,15 +38,19 @@
             <div class="login-panel">
                 <h2>Entrar</h2>
                 
-                <form action="#">
+                <form action="${cp}/processaConta" method="POST">
+                    <input name="acao" type="hidden" value="login"/>
+                    <div>
+                        ${erro}
+                    </div>
                     <div class="input-group">
                         <label for="email">Insira seu email</label>
-                        <input type="email" id="email" name="email" value="seuemail@gmail.com">
+                        <input type="email" id="email" name="email" placeholder="seuemail@gmail.com">
                     </div>
                     
                     <div class="input-group">
                         <label for="password">Insira sua senha</label>
-                        <input type="password" id="password" name="password" value="************">
+                        <input type="password" id="password" name="password" placeholder="************">
                     </div>
                     
                     <div class="form-options">

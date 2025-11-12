@@ -43,7 +43,9 @@
                 <div class="register-panel">
                     <h2>Criar</h2>
 
-                    <form method="post" action="${cp}/processaCadastro">
+                    <form method="post" action="${cp}/processaConta">
+                        <!-- não tirem esse input -->
+                        <input name="acao" type="hidden" value="cadastro"/>
                         <div>
                             <p>${erro}</p>
                         </div>
