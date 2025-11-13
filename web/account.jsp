@@ -1,3 +1,7 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="cp" value="${pageContext.request.contextPath}"/>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -27,8 +31,8 @@
     <header>
       <nav>
         <div class="nav-left">
-          <a href="./levels.html" class="nav-btn">Fases</a>
-          <a href="./about.html" class="nav-btn">Sobre</a>
+          <a href="${cp}/levels.jsp" class="nav-btn">Fases</a>
+          <a href="${cp}/about.jsp" class="nav-btn">Sobre</a>
         </div>
 
 
@@ -62,13 +66,13 @@
               <div class="avatar-item" onclick="selectAvatar(this)">
                 <img
                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Gadus_morhua_%28head%29.jpg/250px-Gadus_morhua_%28head%29.jpg"
-                  alt="[Imagem de Bacalhau do atlântico]">
+                  alt="[Imagem de Bacalhau do atlÃ¢ntico]">
                 <p>Bacalhau do Atlântico</p>
               </div>
               <div class="avatar-item" onclick="selectAvatar(this)">
                 <img
                   src="https://mergulholivre.com.br/wp-content/uploads/2023/07/Tubarao-Mako-peixe-de-agua-salgada-foto-6.webp"
-                  alt="[Imagem de Tubarão Mako]">
+                  alt="[Imagem de TubarÃ£o Mako]">
                 <p>Tubarão Mako</p>
               </div>
               <div class="avatar-item" onclick="selectAvatar(this)">

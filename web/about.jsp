@@ -1,3 +1,7 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="cp" value="${pageContext.request.contextPath}"/>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -23,15 +27,15 @@
         <header>
             <nav>
                 <div class="nav-left">
-                    <a href="./levels.html" class="nav-btn">Fases</a>
+                    <a href="${cp}/levels.jsp" class="nav-btn">Fases</a>
                     <a href="#" class="nav-btn active">Sobre</a>
                 </div>
                 <div class="nav-right">
                     <div class="dropdown">
                         <button class="nav-btn">Conta</button>
                         <div class="dropdown-content">
-                            <a href="./login.html">Entrar</a>
-                            <a href="./register.html">Criar Conta</a>
+                            <a href="${cp}/login.jsp">Entrar</a>
+                            <a href="${cp}/register.jsp">Criar Conta</a>
                         </div>
                     </div>
                 </div>
@@ -43,7 +47,7 @@
                 <h2>Sobre a Aquapédia</h2>
                 
                 <p class="project-description">
-                    Bem-vindo à Aquapédia! Uma plataforma de jogos educativos onde você mergulha em uma aventura pelo conhecimento dos oceanos. Crie sua conta, explore fases temáticas, colete palavras em textos investigativos e use seu raciocínio para resolver os desafios. Aprender sobre a vida marinha nunca foi tão divertido!
+                    Bem-vindo à Aquapédia! Uma plataforma de jogos educativos onde você mergulha em uma aventura pelo conhecimento dos oceanos. Crie sua conta, explore fases temáticas, colete palavras em textos educativos e use seu raciocí­nio para resolver os desafios. Aprender sobre a vida marinha nunca foi tão divertido!
                 </p>
                 
                 <h3>Desenvolvedores</h3>
@@ -51,12 +55,12 @@
 <!-- TODO: Add all the members and their info -->
                 <div class="developers-list">
                     <div class="developer-card">
-                        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fget.wallhere.com%2Fphoto%2Fillustration-cartoon-pattern-South-Park-Butters-ART-333348.jpg&f=1&nofb=1&ipt=8a816d130b56272b34800ed208a6110ca7d9c898a6faba46da28ba59f1d073f3" alt="Foto do desenvolvedor Aloísio">
+                        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fget.wallhere.com%2Fphoto%2Fillustration-cartoon-pattern-South-Park-Butters-ART-333348.jpg&f=1&nofb=1&ipt=8a816d130b56272b34800ed208a6110ca7d9c898a6faba46da28ba59f1d073f3" alt="Foto do desenvolvedor AloÃ­sio">
                         <div class="developer-info">
-                            <h4>Aloísio</h4>
+                            <h4>AloÃ­sio</h4>
                             <p class="role">Arquiteto de Software e Game Designer</p>
                             <p class="contacts">Contato: <a href="#">email@exemplo.com</a></p>
-                            <p class="impact-phrase">"Transformando códigos em oceanos de possibilidades."</p>
+                            <p class="impact-phrase">"Transformando cÃ³digos em oceanos de possibilidades."</p>
                         </div>
                     </div>
                     

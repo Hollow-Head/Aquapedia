@@ -1,3 +1,7 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="cp" value="${pageContext.request.contextPath}"/>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -21,16 +25,16 @@
         <div class="fish-group f1"></div>
     </div>
 
-    <!-- Conteúdo principal da página -->
+    <!-- ConteÃºdo principal da página -->
     <div class="container">
         <header>
             <nav>
                 <div class="nav-left">
                     <!-- <a href="./levels.html" class="nav-btn">Fases</a> -->
-                    <a href="./about.html" class="nav-btn">Sobre</a>
+                    <a href="${cp}/about.jsp" class="nav-btn">Sobre</a>
                 </div>
                 <div class="nav-right">
-                    <a href="./account.html" class="nav-btn">Conta</a>
+                    <a href="${cp}/account.jsp" class="nav-btn">Conta</a>
                 </div>
             </nav>
         </header>
@@ -42,7 +46,7 @@
                 <div id="step-1-email" class="step active">
                     <h2>Redefinir Senha</h2>
                     <p class="info-text">
-                        Insira seu email já cadastrado para que possamos fazer a verificação que você já é membro do Aquapédia.
+                        Insira seu email já cadastrado para que possamos fazer a verificação que vocé já é um membro do Aquapédia.
                     </p>
                     <form onsubmit="goToStep(event, 'step-2-redefine')">
                         <div class="input-group">
@@ -57,7 +61,7 @@
                     <h2>Redefinir Senha</h2>
                      <form onsubmit="goToStep(event, 'step-3-confirmation')">
                         <div class="input-group">
-                            <label for="new-password">Insira sua nova senha (mínimo de 8 caracteres)</label>
+                            <label for="new-password">Insira sua nova senha (mí­nimo de 8 caracteres)</label>
                             <input type="password" id="new-password" name="new-password" minlength="8" required>
                         </div>
                         <div class="input-group">
@@ -92,7 +96,7 @@
                 step.classList.remove('active');
             });
 
-            // Mostra a próxima etapa
+            // Mostra a prÃ³xima etapa
             document.getElementById(nextStepId).classList.add('active');
         }
     </script>

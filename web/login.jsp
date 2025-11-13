@@ -1,3 +1,7 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="cp" value="${pageContext.request.contextPath}"/>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -27,7 +31,7 @@
             <nav>
                 <div class="nav-left">
                     <!-- <a href="./levels.html" class="nav-btn">Fases</a> -->
-                    <a href="./about.html" class="nav-btn">Sobre</a>
+                    <a href="${cp}/about.jsp" class="nav-btn">Sobre</a>
                 </div>
                 <div class="nav-right">
                 </div>

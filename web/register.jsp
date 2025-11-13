@@ -7,7 +7,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Criar Conta - AquapÃ©dia</title>
+        <title>Criar Conta - Aquapédia</title>
         <link rel="stylesheet" type="" href="./css/style.css">
 
         <!-- Importando a fonte do Google Fonts -->
@@ -18,20 +18,20 @@
     </head>
     <body>
 
-        <!-- Elementos animados no fundo da pÃ¡gina -->
+        <!-- Elementos animados no fundo da página -->
         <div class="sea-background">
             <div class="jellyfish j1"></div>
             <div class="jellyfish j2"></div>
             <div class="fish-group f1"></div>
         </div>
 
-        <!-- ConteÃºdo principal da pÃ¡gina -->
+        <!-- Conteúdo principal da página -->
         <div class="container">
             <header>
                 <nav>
                     <div class="nav-left">
                         <!-- <a href="./levels.html" class="nav-btn">Fases</a> -->
-                        <a href="./about.html" class="nav-btn">Sobre</a>
+                        <a href="${cp}/about.jsp" class="nav-btn">Sobre</a>
                     </div>
                     <!-- <div class="nav-right">
                         <a href="./account.html" class="nav-btn">Conta</a>
@@ -61,7 +61,7 @@
                         </div>
 
                         <div class="input-group">
-                            <label for="password">Insira sua senha (mÃ­nimo de 8 caracteres)</label>
+                            <label for="password">Insira sua senha (mí­nimo de 8 caracteres)</label>
                             <input type="password" id="password" name="password">
                         </div>
 
@@ -73,7 +73,7 @@
                         <button type="submit" class="submit-btn">Criar conta</button>
 
                         <div class="form-switch">
-                            <span>JÃ¡ possui cadastro? <a href="./login.html">Entrar na sua conta</a></span>
+                            <span>Já possui cadastro? <a href="${cp}/login.jsp">Entrar na sua conta</a></span>
                         </div>
                     </form>
                 </div>

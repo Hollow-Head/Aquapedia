@@ -7,7 +7,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>AquapÃ©dia - Bem-vindo!</title>
+        <title>Aquapédia - Bem-vindo!</title>
         <link rel="stylesheet" href="./css/style.css">
 
         <!-- Importando a fonte do Google Fonts -->
@@ -42,8 +42,8 @@
                             <!-- PRECISA COLOCAR AS COISAS AQUI QUANDO O USUARIO ESTÀ LOGADO -->
                             <h1>USUARIO LOGADO</h1>
                             <div class="nav-left">
-                                <a href="./levels.html" class="nav-btn">Fases</a>
-                                <a href="./about.html" class="nav-btn">Sobre</a>
+                                <a href="${cp}/levels.jsp" class="nav-btn">Fases</a>
+                                <a href="${cp}/about.jsp" class="nav-btn">Sobre</a>
                             </div>
                         </c:when>
                         <c:otherwise>
@@ -77,7 +77,7 @@
                 <div class="bubble"></div>
                 <div class="bubble"></div>
                 <div class="bubble"></div>
-                <a href="levels.html" class="play-button">JOGAR</a>
+                <a href="${cp}/levels.jsp" class="play-button">JOGAR</a>
             </main>
         </div>
 

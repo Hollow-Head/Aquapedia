@@ -1,3 +1,7 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="cp" value="${pageContext.request.contextPath}"/>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -27,23 +31,23 @@
         <header>
             <nav>
                 <div class="nav-left">
-                    <!-- O botão "Fases" agora está marcado como ativo -->
+                    <!-- O botÃ£o "Fases" agora estÃ¡ marcado como ativo -->
                     <a href="#" class="nav-btn active">Fases</a>
-                    <a href="./about.html" class="nav-btn">Sobre</a>
+                    <a href="${cp}/about.jsp" class="nav-btn">Sobre</a>
                 </div>
                 <div class="nav-right">
                     <div class="dropdown">
                         <!-- Botão de conta no estado "logado" -->
                         <button class="nav-btn">
-                            <img src="https://mergulholivre.com.br/wp-content/uploads/2023/07/Tubarao-Mako-peixe-de-agua-salgada-foto-6.webp" alt="Avatar do Usuário" class="user-avatar">
+                            <img src="https://mergulholivre.com.br/wp-content/uploads/2023/07/Tubarao-Mako-peixe-de-agua-salgada-foto-6.webp" alt="Avatar do UsuÃ¡rio" class="user-avatar">
                             <span>Apelido</span>
                         </button>
                         <div class="dropdown-content">
-                            <a href="./account.html">Alterar Foto</a>
-                            <a href="./account.html">Alterar Apelido</a>
-                            <a href="./account.html">Alterar Senha</a>
-                            <a href="./account.html">Excluir Conta</a>
-                            <a href="./account.html">Sair</a>
+                            <a href="${cp}/account.jsp">Alterar Foto</a>
+                            <a href="${cp}/account.jsp">Alterar Apelido</a>
+                            <a href="${cp}/account.jsp">Alterar Senha</a>
+                            <a href="${cp}/account.jsp">Excluir Conta</a>
+                            <a href="${cp}/account.jsp">Sair</a>
                         </div>
                     </div>
                 </div>
@@ -54,13 +58,11 @@
             <div class="phases-panel">
                 <h2>Fases</h2>
                 <div class="phase-grid">
-                    <a href="./playing-level.html" class="phase-item">Oceano Atlântico</a>
-                    <a href="./playing-level.html" class="phase-item">Oceano Pacífico</a>
-                    <a href="./playing-level.html" class="phase-item">Oceano Índico</a>
-                    <a href="./playing-level.html" class="phase-item">Oceano Ártico</a>
-                    <a href="./playing-level.html" class="phase-item">Oceano Antártico</a>
-                    <a href="./playing-level.html" class="phase-item">Mar Morto</a>
-                    <a href="./playing-level.html" class="phase-item">Fossa das Marianas</a>
+                    <a href="${cp}/playing-level.jsp" class="phase-item">Oceano Atlântico</a>
+                    <a href="${cp}/playing-level.jsp" class="phase-item">Oceano Pací­fico</a>
+                    <a href="${cp}/playing-level.jsp" class="phase-item">Oceano Índico</a>
+                    <a href="${cp}/playing-level.jsp" class="phase-item">Oceano Ártico</a>
+                    <a href="${cp}/playing-level.jsp" class="phase-item">Oceano Antártico</a>
                 </div>
             </div>
         </main>
