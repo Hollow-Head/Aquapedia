@@ -8,7 +8,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fase: Oceano PacÃ­fico - Aquapédia</title>
+  <title>Fase: Aquapédia</title>
   <link rel="stylesheet" href="./css/style.css">
 
   <!-- Importando a fonte do Google Fonts -->
@@ -42,19 +42,11 @@
       <!-- Seção 1: Leitura do Texto -->
       <section id="reading-section" class="game-section active">
         <div class="reading-panel">
-        <!-- <h3>Fase 2: Oceano PacÃ­fico</h3>
+        <h3>Fase Nº - Nome Fase</h3>
           <p>
-            O <mark class="collectible-item" data-type="word">Oceano PacÃ­fico</mark> Ã© o maior oceano da Terra, situado
-            entre a <mark class="collectible-item" data-type="word">AmÃ©rica</mark>, a leste, a Ãsia e a <mark
-              class="collectible-item" data-type="word">AustrÃ¡lia</mark>, a oeste. Nele, habitam criaturas incrÃ­veis
-            como a <mark class="collectible-item" data-type="animal">Baleia-Azul</mark>, o maior animal do planeta, e a
-            predatÃ³ria <mark class="collectible-item" data-type="animal">Orca</mark>. Com 180 milhÃµes de kmÂ² de Ã¡rea
-            superficial, o PacÃ­fico cobre quase um terÃ§o da superfÃ­cie do <mark class="collectible-item"
-              data-type="word">planeta</mark>, e em suas Ã¡guas frias nadam a <mark class="collectible-item"
-              data-type="animal">Beluga</mark> e o gigante <mark class="collectible-item"
-              data-type="animal">Cachalote</mark>.
+              Texto da Fase
           </p>
-        -->
+        
           <div class="inventory-area">
             <!-- <h4>Itens Coletados:</h4> -->
             <ul id="inventory-list"></ul>
@@ -68,10 +60,6 @@
         <div class="game-panel">
           <div class="interactive-area">
             <div class="fill-in-blanks">
-              <!-- <span class="blank-space" data-slot="oceano pacifico"></span> ...Ã© o maior oceano do <span
-                class="blank-space" data-slot="planeta"></span>, situado entre a <span class="blank-space"
-                data-slot="america"></span>, a leste, a Ãsia e a <span class="blank-space"
-                data-slot="australia"></span>, a oeste... -->
             </div>
 
             <div class="image-slots">

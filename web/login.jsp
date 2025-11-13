@@ -69,7 +69,7 @@
                     <button type="submit" class="submit-btn">Entrar</button>
                     
                     <div class="form-switch">
-                        <span>Não possui cadastro? <a href="./register.html">Criar conta</a></span>
+                        <span>Não possui cadastro? <a href="${cp}/register.jsp">Criar conta</a></span>
                     </div>
                 </form>
             </div>

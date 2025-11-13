@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const fillInBlanksEl = document.querySelector('.fill-in-blanks');
     const imageSlotsEl = document.querySelector('.image-slots');
 
-    fetch('../../fases/fases_aquapedia.json')
+    fetch('/aquapedia/scripts/fases_aquapedia.json')
         .then(response => {
             if (!response.ok) { throw new Error('Erro de rede ao buscar o JSON'); }
             return response.json();

@@ -58,11 +58,11 @@
             <div class="phases-panel">
                 <h2>Fases</h2>
                 <div class="phase-grid">
-                    <a href="${cp}/playing-level.jsp" class="phase-item">Oceano Atlântico</a>
-                    <a href="${cp}/playing-level.jsp" class="phase-item">Oceano Pací­fico</a>
-                    <a href="${cp}/playing-level.jsp" class="phase-item">Oceano Índico</a>
-                    <a href="${cp}/playing-level.jsp" class="phase-item">Oceano Ártico</a>
-                    <a href="${cp}/playing-level.jsp" class="phase-item">Oceano Antártico</a>
+                    <a href="${cp}/playing-level.jsp?id=1" class="phase-item">Oceano Atlântico</a>
+                    <a href="${cp}/playing-level.jsp?id=2" class="phase-item">Oceano Pací­fico</a>
+                    <a href="${cp}/playing-level.jsp?id=3" class="phase-item">Oceano Índico</a>
+                    <a href="${cp}/playing-level.jsp?id=4" class="phase-item">Oceano Ártico</a>
+                    <a href="${cp}/playing-level.jsp?id=5" class="phase-item">Oceano Antártico</a>
                 </div>
             </div>
         </main>
