@@ -15,9 +15,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.security.MessageDigest;
 import java.sql.SQLException;
-import java.sql.Connection;
-import java.util.Arrays;
 
 /**
  *
@@ -37,103 +36,115 @@ public class ProcessaConta extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
 
         String acao = request.getParameter("acao");
         UsuarioDAO dao = null;
         RequestDispatcher disp = null;
-        
-        if(acao.equals("cadastro")){
+
+        if (acao.equals("cadastro")) {
             try {
 
-            dao = new UsuarioDAO();
+                dao = new UsuarioDAO();
 
-            String nome = request.getParameter("nickname");
-            String email = request.getParameter("email");
-            String senha = request.getParameter("password");
-            String confirmarSenha = request.getParameter("confirm-password");
-            
-            
-            //validar o senha e confirma senha
-            //validar senha e email e apelido
-            String validaNome = StringValidator.isNicknameValid(nome);
-            String validaEmail = StringValidator.isEmailValid(email);
-            String validaSenha = StringValidator.isPasswordValid(senha);
-            String conferirSenhas = StringValidator.arePasswordsEqual(senha, confirmarSenha);
-            
-            String erro = null;
+                String nome = request.getParameter("nickname");
+                String email = request.getParameter("email");
+                String senha = request.getParameter("password");
+                String confirmarSenha = request.getParameter("confirm-password");
 
-            if (nome.isEmpty() || email.isEmpty() || senha.isEmpty() || confirmarSenha.isEmpty()) {
-                erro = "Por Favor, Preencha todos os campos";
-            } else if(conferirSenhas != null) {
-                erro = conferirSenhas;
-            } else if (validaNome != null) {
-                erro = validaNome;
-            } else if (validaEmail != null){
-                erro = validaEmail;
-            } else if(validaSenha != null){
-                erro = validaSenha;
-            }
-            if(dao.verificarSeJáExisteUsuário(nome, email) != null){
-                erro = dao.verificarSeJáExisteUsuário(nome, email);
-            }
-            
-           
-            if (erro != null)
-            {
-                throw new Exception(erro);
-                
-            }
-            try {
-                Usuario usuario = new Usuario();
-                usuario.setEmail(email);
-                usuario.setNome(nome);
-                usuario.setSenha(PasswordEncoder.encoder(senha).toString());
+                //validar o senha e confirma senha
+                //validar senha e email e apelido
+                String validaNome = StringValidator.isNicknameValid(nome);
+                String validaEmail = StringValidator.isEmailValid(email);
+                String validaSenha = StringValidator.isPasswordValid(senha);
+                String conferirSenhas = StringValidator.arePasswordsEqual(senha, confirmarSenha);
 
-                dao.salvar(usuario);
+                String erro = null;
 
-                disp = request.getRequestDispatcher(
-                        "/index.jsp");
-                disp.forward(request, response);
-            } catch (Exception e) {
-                if (dao != null) {
-                    try {
-                        dao.fecharConexao();
-                    } catch (SQLException exc) {
-                        exc.printStackTrace();
+                if (nome.isEmpty() || email.isEmpty() || senha.isEmpty() || confirmarSenha.isEmpty()) {
+                    erro = "Por Favor, Preencha todos os campos";
+                } else if (conferirSenhas != null) {
+                    erro = conferirSenhas;
+                } else if (validaNome != null) {
+                    erro = validaNome;
+                } else if (validaEmail != null) {
+                    erro = validaEmail;
+                } else if (validaSenha != null) {
+                    erro = validaSenha;
+                }
+                if (dao.verificarSeJáExisteUsuário(nome, email) != null) {
+                    erro = dao.verificarSeJáExisteUsuário(nome, email);
+                }
+
+                if (erro != null) {
+                    throw new Exception(erro);
+
+                }
+                try {
+                    Usuario usuario = new Usuario();
+                    usuario.setEmail(email);
+                    usuario.setNome(nome);
+
+                    byte[] salt = PasswordEncoder.getNextSalt();
+                    byte[] hash = PasswordEncoder.hash(senha, salt);
+
+                    usuario.setSenha_hash(hash);
+                    usuario.setSenha_salt(salt);
+
+                    dao.salvar(usuario);
+
+                    disp = request.getRequestDispatcher(
+                            "/index.jsp");
+                    disp.forward(request, response);
+                } catch (Exception e) {
+                    if (dao != null) {
+                        try {
+                            dao.fecharConexao();
+                        } catch (SQLException exc) {
+                            exc.printStackTrace();
+                        }
                     }
                 }
+            } catch (Exception e) {
+                System.out.println("deu erro ó " + e);
+                request.setAttribute("erro", e.getMessage());
+                disp = request.getRequestDispatcher("/register.jsp");
+                disp.forward(request, response);
             }
-        } catch (Exception e) {
-            System.out.println("deu erro ó " + e);
-            request.setAttribute("erro", e.getMessage());
-            disp = request.getRequestDispatcher("/register.jsp");
-            disp.forward(request, response);
-        }
-           
-     
-        } else if(acao.equals("login")){
+
+        } else if (acao.equals("login")) {
             try {
                 dao = new UsuarioDAO();
 
                 String email = request.getParameter("email");
                 String senha = request.getParameter("password");
-                
+
                 String erro = null;
-                
-                if(email == null || senha == null){
+
+                if (email == null || senha == null) {
                     erro = "Por Favor, Preencha todos os campos";
+
                 }
-                
-                if(dao.buscarPorUsuario(email, PasswordEncoder.encoder(senha).toString()) == null){
+
+                Usuario usuario = dao.buscarPorUsuario(email);
+
+                if (usuario == null) {
                     erro = "Esse aquapédico não existe";
+
+                } else {
+
+                    byte[] saltDoBanco = usuario.getSenha_salt();
+
+                    byte[] senhaCriptografada = PasswordEncoder.hash(senha, saltDoBanco);
+
+                    byte[] hashDoBanco = usuario.getSenha_hash();
+
+                    if (!MessageDigest.isEqual(senhaCriptografada, hashDoBanco)) {
+                        erro = "E-mail ou senha inválidos";
+                    }
                 }
-                
-                if(erro == null){
-                    Usuario usuario = new Usuario();
-                    usuario = dao.buscarPorUsuario(email, senha);
-                    
+
+                if (erro == null) {
+
                     HttpSession sessao = request.getSession(true);
                     sessao.setAttribute("usuarioLogado", usuario);
                     response.sendRedirect(request.getContextPath() + "/index.jsp");
@@ -147,7 +158,6 @@ public class ProcessaConta extends HttpServlet {
             }
         }
 
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

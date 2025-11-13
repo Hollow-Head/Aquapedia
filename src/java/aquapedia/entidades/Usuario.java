@@ -13,7 +13,8 @@ public class Usuario {
     private int id;
     private String nome;
     private String email;
-    private String senha;
+    private byte[] senha_hash;
+    private byte[] senha_salt;
     private int progresso;
     private int foto;
 
@@ -41,12 +42,20 @@ public class Usuario {
         this.email = email;
     }
 
-    public String getSenha() {
-        return senha;
+    public byte[] getSenha_hash() {
+        return senha_hash;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setSenha_hash(byte[] senha_hash) {
+        this.senha_hash = senha_hash;
+    }
+
+    public byte[] getSenha_salt() {
+        return senha_salt;
+    }
+
+    public void setSenha_salt(byte[] senha_salt) {
+        this.senha_salt = senha_salt;
     }
 
     public int getProgresso() {
@@ -64,6 +73,6 @@ public class Usuario {
     public void setFoto(int foto) {
         this.foto = foto;
     }
-    
+
     
 }

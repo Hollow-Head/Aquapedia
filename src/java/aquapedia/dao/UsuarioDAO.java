@@ -27,15 +27,16 @@ public class UsuarioDAO extends DAO<Usuario> {
         PreparedStatement stmt = conexao.prepareStatement(
                 """
                 INSERT INTO USUARIOS
-                (USR_NOME, USR_EMAIL, USR_SENHA)
+                (USR_NOME, USR_EMAIL, USR_SENHA_HASH, USR_SENHA_SALT)
                 VALUES
-                (?, ?, ?);
+                (?, ?, ?, ?);
                 """
         );
         
         stmt.setString(1, obj.getNome());
         stmt.setString(2, obj.getEmail());
-        stmt.setString(3, obj.getSenha());
+        stmt.setBytes(3, obj.getSenha_hash());
+        stmt.setBytes(4, obj.getSenha_salt());
         
         stmt.executeUpdate();
     }
@@ -48,7 +49,8 @@ public class UsuarioDAO extends DAO<Usuario> {
                 SET
                 USR_NOME = ?,
                 USR_EMAIL = ?, 
-                USR_SENHA = ?, 
+                USR_SENHA_HASH = ?,
+                USR_SENHA_SALT = ?,
                 USR_PROGRESSO = ?, 
                 USR_FOTO = ?
                 WHERE
@@ -58,11 +60,12 @@ public class UsuarioDAO extends DAO<Usuario> {
         
         stmt.setString(1, obj.getNome());
         stmt.setString(2, obj.getEmail());
-        stmt.setString(3, obj.getSenha());
-        stmt.setInt(4, obj.getProgresso());
-        stmt.setInt(5, obj.getFoto());
+        stmt.setBytes(3, obj.getSenha_hash());
+        stmt.setBytes(4, obj.getSenha_salt());
+        stmt.setInt(5, obj.getProgresso());
+        stmt.setInt(6, obj.getFoto());
         
-        stmt.setInt(6, obj.getId());
+        stmt.setInt(7, obj.getId());
         
         stmt.executeUpdate();
         stmt.close();
@@ -145,11 +148,10 @@ public class UsuarioDAO extends DAO<Usuario> {
         return usuario;
     }
     
-    public Usuario buscarPorUsuario (String email, String senha)throws SQLException{
-        String sql = "SELECT 1 FROM usuarios WHERE USR_EMAIL = ? OR USR_SENHA = ?";
+    public Usuario buscarPorUsuario (String email)throws SQLException{
+        String sql = "SELECT * FROM USUARIOS WHERE USR_EMAIL = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setString(1, email);
-        stmt.setString(2, senha);
         ResultSet rs;
         rs  = stmt.executeQuery();
         Usuario usuario;
@@ -159,6 +161,8 @@ public class UsuarioDAO extends DAO<Usuario> {
             String progressoEncontrado = rs.getString("USR_PROGRESSO");
             String fotoEncontrada = rs.getString("USR_FOTO");
             String idEncontrado = rs.getString("USR_ID");
+            byte[] senhaEncontrada = rs.getBytes("USR_SENHA_HASH");
+            byte[] saltEncontrado = rs.getBytes("USR_SENHA_SALT");
             
             
             try {
@@ -168,6 +172,9 @@ public class UsuarioDAO extends DAO<Usuario> {
                 usuario.setProgresso(Integer.parseInt(progressoEncontrado));
                 usuario.setFoto(Integer.parseInt(fotoEncontrada));
                 usuario.setId(Integer.parseInt(idEncontrado));
+                usuario.setSenha_hash(senhaEncontrada);
+                usuario.setSenha_salt(saltEncontrado);
+                
                 return usuario;
             } catch (Exception e) {
                 return null;
@@ -184,7 +191,7 @@ public class UsuarioDAO extends DAO<Usuario> {
  * @return String se tiver um erro, null caso contrario.
  */
     public String verificarSeJáExisteUsuário(String apelido, String email) throws SQLException{
-        String sql = "SELECT 1 FROM usuarios WHERE USR_EMAIL = ? OR USR_NOME = ?";
+        String sql = "SELECT 1 FROM USUARIOS WHERE USR_EMAIL = ? OR USR_NOME = ?";
         
             PreparedStatement stmt = conexao.prepareStatement(sql);
             stmt.setString(1, email);

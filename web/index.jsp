@@ -48,6 +48,10 @@
                         </c:when>
                         <c:otherwise>
                             <!-- PRECISA COLOCAR AS COISAS AQUI QUANDO O USUARIO NÃO ESTÁ LOGADO ESTÀ LOGADO -->
+                           <div class="nav-left">
+                                <a href="${cp}/levels.jsp" class="nav-btn">Fases</a>
+                                <a href="${cp}/about.jsp" class="nav-btn">Sobre</a>
+                            </div>
                             <div class="nav-right">
                                 <div class="dropdown">
                                     <button class="nav-btn">Conta</button>

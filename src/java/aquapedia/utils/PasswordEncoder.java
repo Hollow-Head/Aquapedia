@@ -10,14 +10,20 @@ import javax.crypto.spec.PBEKeySpec;
 
 public class PasswordEncoder {
 
-    public static byte[] encoder(String password) throws NoSuchAlgorithmException, InvalidKeySpecException{
-        SecureRandom random = new SecureRandom();
-        byte[] salt = new byte[16];
-        random.nextBytes(salt);
+    public static byte[] hash(String password, byte[] salt) 
+            throws NoSuchAlgorithmException, InvalidKeySpecException {
+        
         KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 65536, 128);
         SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
         byte[] hash = factory.generateSecret(spec).getEncoded();
         return hash;
+    }
+    
+    public static byte[] getNextSalt() {
+        SecureRandom random = new SecureRandom();
+        byte[] salt = new byte[16];
+        random.nextBytes(salt);
+        return salt;
     }
 
 }
