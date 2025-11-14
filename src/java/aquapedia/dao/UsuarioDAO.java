@@ -209,5 +209,22 @@ public class UsuarioDAO extends DAO<Usuario> {
             }
     }
     
+    public void atualizarProgresso(int usuarioId, int novoProgresso) throws SQLException {
+        String sql = "UPDATE USUARIOS SET USR_PROGRESSO = ? WHERE USR_ID = ?";
+        
+        PreparedStatement stmt = null;
+        
+        try {
+            stmt = conexao.prepareStatement(sql);
+            stmt.setInt(1, novoProgresso);
+            stmt.setInt(2, usuarioId);
+            stmt.executeUpdate();
+        } finally {
+            if (stmt != null) {
+                stmt.close();
+            }
+        }
+    }
+    
     
 }

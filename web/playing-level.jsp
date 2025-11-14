@@ -1,7 +1,36 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="cp" value="${pageContext.request.contextPath}"/>
+<%@ page import="aquapedia.entidades.Usuario" %> <%-- Importe sua classe Usuario --%>
+<%
+    Usuario usuarioLogado = (Usuario) session.getAttribute("usuarioLogado");
 
+    if (usuarioLogado == null) {
+
+        response.sendRedirect(request.getContextPath() + "/login.jsp");
+
+        return;
+    }
+
+    pageContext.setAttribute("usuario", usuarioLogado);
+    
+    String actualLevelString = request.getParameter("id");
+
+    int actualLevelInt = 1;
+    
+    if (actualLevelString != null) {
+        actualLevelInt = Integer.parseInt(actualLevelString);
+    } else {
+        actualLevelInt = usuarioLogado.getProgresso();
+    }
+    
+    if (usuarioLogado.getProgresso() < actualLevelInt) {
+        response.sendRedirect(request.getContextPath() + "/playing-level.jsp?id=" + usuarioLogado.getProgresso());
+
+        return;
+    }
+    
+%>
 <!DOCTYPE html>
 <html lang="pt-BR">
 

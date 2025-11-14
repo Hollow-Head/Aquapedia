@@ -306,6 +306,31 @@ document.addEventListener('DOMContentLoaded', () => {
         if (allCorrect) {
             resultMessage.textContent = "Parabéns, todas as respostas estão corretas!";
             resultMessage.style.color = 'var(--correct-green, green)';
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            const levelId = urlParams.get('id');
+
+        
+            fetch(`processaConta?acao=completarNivel&id=${levelId}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Falha ao salvar progresso no servidor.');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    window.location.href = `levels.jsp`;
+                } else {
+                    resultMessage.textContent = 'Erro: ' + (data.message || 'Tente novamente.');
+                    resultMessage.style.color = 'var(--incorrect-red, red)';
+                }
+            })
+            .catch(error => {
+                console.error('Erro no fetch:', error);
+                resultMessage.textContent = 'Erro de rede. Verifique sua conexão.';
+                resultMessage.style.color = 'var(--incorrect-red, red)';
+            });
         } else {
             resultMessage.textContent = "Ops, parece que algo não está certo. Tente novamente!";
             resultMessage.style.color = 'var(--incorrect-red, red)';

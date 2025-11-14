@@ -221,6 +221,7 @@
       "texto_fase": "Nossa expedição termina no local mais frio, ventoso e selvagem do planeta. O Oceano Antártico, por vezes chamado de Oceano Austral, é o que circunda o continente congelado da Antártida. Ele é o único oceano que flui ao redor de todo o globo sem ser interrompido por continentes, criando a Corrente Circumpolar Antártica, a mais forte do mundo, que isola o continente e o mantém gelado. Apesar das condições extremas, este oceano transborda vida, e tudo graças a uma criatura minúscula: o Krill-Antártico. Este pequeno crustáceo, parecido com um camarão, forma cardumes tão densos que podem ser vistos do espaço. Ele é a base de toda a cadeia alimentar local. Baleias, focas, lulas e pinguins — quase tudo aqui depende diretamente do krill para sobreviver. A presença humana é mínima, composta apenas por visitantes em Estações científicas isoladas, dedicadas a estudar o clima e este ecossistema único. Os verdadeiros habitantes são criaturas de resistência incrível. O Pinguim-Imperador é famoso por se reproduzir durante o inverno implacável, e a Foca-de-Weddell é uma mergulhadora de elite, capaz de prender a respiração por mais de uma hora para caçar sob o gelo espesso.",
       "palavras_coletadas": [
         "Antártico",
+        "Austral",
         "Antártida",
         "Krill-Antártico",
         "Cadeia alimentar",
@@ -239,11 +240,10 @@
           { "tipo": "lacuna", "id_slot": "antartico" },
           { "tipo": "texto", "conteudo": " é o que rodeia o continente da " },
           { "tipo": "lacuna", "id_slot": "antartida" },
-          { "tipo": "texto", "conteudo": ". A base de toda a " },
-          { "tipo": "lacuna", "id_slot": "cadeia-alimentar" },
-          { "tipo": "texto", "conteudo": " deste oceano é o " },
-          { "tipo": "lacuna", "id_slot": "krill-antartico" },
-          { "tipo": "texto", "conteudo": ". Os humanos só habitam a região em " },
+          { "tipo": "texto", "conteudo": ". Este oceano também é chamado de Oceano " },
+          { "tipo": "lacuna", "id_slot": "austral" },
+          { "tipo": "texto", "conteudo": "."},
+          { "tipo": "texto", "conteudo": ". Os humanos só habitam esta região em " },
           { "tipo": "lacuna", "id_slot": "estacoes-cientificas" },
           { "tipo": "texto", "conteudo": "." }
         ],
@@ -255,10 +255,10 @@
         "respostas_corretas": {
           "antartico": "Antártico",
           "antartida": "Antártida",
-          "cadeia-alimentar": "Cadeia alimentar",
-          "krill-antartico": "Krill-Antártico",
+          "austral": "Austral",
           "estacoes-cientificas": "Estações científicas",
           "foca-de-weddell": "Foca-de-Weddell",
+          "krill-antartico": "Krill-Antártico",
           "pinguim-imperador": "Pinguim-Imperador"
         }
       }

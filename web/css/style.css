@@ -1006,7 +1006,7 @@ header.game-header {
 
 /* Ícone de cadeado (opcional, mas recomendado) */
 .phase-item.locked::after {
-    content: '🔒'; /* Emoji de cadeado */
+    content: '🔒U+1F512'; /* Emoji de cadeado */
     font-size: 1.5rem;
     position: absolute;
     top: 50%;

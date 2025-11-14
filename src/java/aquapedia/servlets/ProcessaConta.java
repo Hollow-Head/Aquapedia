@@ -15,6 +15,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.io.PrintWriter;
 import java.security.MessageDigest;
 import java.sql.SQLException;
 
@@ -155,6 +156,38 @@ public class ProcessaConta extends HttpServlet {
                 request.setAttribute("erro", e.getMessage());
                 disp = request.getRequestDispatcher("/login.jsp");
                 disp.forward(request, response);
+            }
+        } else if (acao.equals("completarNivel")) {
+            response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
+
+            try (PrintWriter out = response.getWriter()) {
+                HttpSession sessao = request.getSession(false);
+                Usuario usuarioLogado = (sessao != null) ? (Usuario) sessao.getAttribute("usuarioLogado") : null;
+
+                if (usuarioLogado == null) {
+                    out.print("{\success\": false, \"message\": \"Usuário não está logado.\"}");
+                }
+
+                int nivelCompletado = Integer.parseInt(request.getParameter("id"));
+                int progressoAtual = usuarioLogado.getProgresso();
+
+                if (nivelCompletado == progressoAtual) {
+                    dao = new UsuarioDAO();
+                    dao.atualizarProgresso(usuarioLogado.getId(), progressoAtual + 1);
+
+                    usuarioLogado.setProgresso(progressoAtual + 1);
+                    sessao.setAttribute("usuarioLogado", usuarioLogado);
+                }
+
+                out.print("{\"success\": true}");
+            } catch (Exception e) {
+                try (PrintWriter out = response.getWriter()) {
+                    out.print("{\"success\": false, \"message\": \"" + e.getMessage() + "\"}");
+                } catch (IOException ioex) {
+                    ioex.printStackTrace(); // Erro ao escrever o erro...
+                }
+
             }
         }
 

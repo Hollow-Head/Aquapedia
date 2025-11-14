@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="cp" value="${pageContext.request.contextPath}"/>
-<%@ page import="aquapedia.entidades.Usuario" %> <%-- Importe sua classe Usuario --%>
+<%@ page import="aquapedia.entidades.Usuario" %>
 <%
     Usuario usuarioLogado = (Usuario) session.getAttribute("usuarioLogado");
 
