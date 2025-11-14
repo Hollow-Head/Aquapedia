@@ -76,10 +76,10 @@
         "Peixe-palhaço"
       ],
       "nome_imagens_animais": [
-        "orca.png",
-        "morsa.png",
-        "beluga.png",
-        "peixe-palhaco.png"
+        "orca.webp",
+        "morsa.jpg",
+        "beluga.jpg",
+        "peixe-palhaco.webp"
       ],
       "questionario": {
         "texto_com_lacunas": [
@@ -129,10 +129,10 @@
         "Cangulo-de-cauda-rosa"
       ],
       "nome_imagens_animais": [
-        "dugongo.png",
-        "tubarao-baleia.png",
-        "cirurgiao-patela.png",
-        "cangulo-de-cauda-rosa.png"
+        "dugongo.jpg",
+        "tubarao-baleia.jpg",
+        "cirurgiao-patela.jpg",
+        "cangulo-de-cauda-rosa.jpg"
       ],
       "questionario": {
         "texto_com_lacunas": [
@@ -181,10 +181,10 @@
         "Baleia-da-Groenlândia"
       ],
       "nome_imagens_animais": [
-        "narval.png",
-        "urso-polar.png",
-        "foca-da-groenlandia.png",
-        "baleia-da-groenlandia.png"
+        "narval.webp",
+        "urso-polar.webp",
+        "foca-da-groenlandia.jpg",
+        "baleia-da-groenlandia.webp"
       ],
       "questionario": {
         "texto_com_lacunas": [
@@ -230,9 +230,9 @@
         "Pinguim-Imperador"
       ],
       "nome_imagens_animais": [
-        "foca-de-weddell.png",
-        "pinguim-imperador.png",
-        "krill-antartico.png"
+        "foca-de-weddell.jpg",
+        "pinguim-imperador.jpg",
+        "krill-antartico.jpg"
       ],
       "questionario": {
         "texto_com_lacunas": [
